@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 const terminalData = [
     { label: "Name", value: "Awa Nisan Tojah" },
     { label: "Role", value: "Electrical Engineer & Flutter Dev" },
-    { label: "Stack", value: "['Dart', 'Python', 'C++', 'React']" },
-    { label: "Location", value: "Nigeria" },
-    { label: "Status", value: "Ready to Deploy" },
+    { label: "Stack", value: "['Flutter', 'Dart', 'React', 'Python']" },
+    { label: "Location", value: "Abuja / Ekiti, Nigeria" },
+    { label: "Status", value: "Available for Hire" },
 ];
 
 export function About() {
@@ -50,7 +50,7 @@ export function About() {
     }, []);
 
     return (
-        <section id="about" className="py-32 bg-background relative overflow-hidden">
+        <section id="about" className="py-32 relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="grid md:grid-cols-2 gap-20 items-center">
                     <div>
@@ -67,17 +67,24 @@ export function About() {
 
                         <div className="h-1 w-32 bg-primary mb-12" />
 
-                        <motion.p
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-muted-foreground text-xl leading-relaxed max-w-lg"
+                            className="space-y-6 text-muted-foreground text-xl leading-relaxed max-w-lg"
                         >
-                            I am a <span className="text-foreground font-semibold">500-level Electrical & Electronics Engineering student</span> and <span className="text-foreground font-semibold">Flutter Developer</span>.
-                            I don't just write code; I understand the electrons flowing through the circuits.
-                            My goal is to build systems that are robust, scalable, and physically grounded.
-                        </motion.p>
+                            <p>
+                                My journey sits at the intersection of <span className="text-foreground font-semibold">hardware and code</span>.
+                                Currently finishing my B.Eng in Electrical & Electronics Engineering at Afe Babalola University (ABUAD),
+                                I have developed a dual competency in physical infrastructure and digital solutions.
+                            </p>
+                            <p>
+                                My technical experience ranges from maintaining <span className="text-foreground font-semibold">330kV high-voltage transmission grids</span> at TCN
+                                to deploying fiber-optic networks for Winrock Nigeria. Simultaneously, I have honed my skills as a
+                                <span className="text-foreground font-semibold"> Mobile App Developer</span>, building cross-platform applications like 'NisanApp' using Flutter and Dart.
+                            </p>
+                        </motion.div>
                     </div>
 
                     <motion.div

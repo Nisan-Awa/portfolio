@@ -6,15 +6,16 @@ import { Phone, Mail, Linkedin, Github, ArrowUpRight } from "lucide-react";
 
 export function Contact() {
     return (
-        <section id="contact" className="py-32 bg-black relative overflow-hidden">
+        <section id="contact" className="py-32 relative overflow-hidden">
             <div className="container mx-auto px-6 text-center">
                 <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
                     className="text-5xl md:text-9xl font-bold mb-12 tracking-tighter"
                 >
-                    LET'S <span className="text-primary">TALK</span>
+                    READY TO <span className="text-primary">COLLABORATE?</span>
                 </motion.h2>
 
                 <motion.p
@@ -22,10 +23,25 @@ export function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-20 font-light"
+                    className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 font-light"
                 >
-                    Ready to build something extraordinary? Whether it's <span className="text-foreground">mobile development</span>, <span className="text-foreground">network engineering</span>, or <span className="text-foreground">electrical systems</span>, I'm ready to deploy.
+                    Whether you need a <span className="text-foreground font-medium">sleek mobile app</span>, <span className="text-foreground font-medium">network infrastructure advice</span>, or an engineer who understands the full technical stack, I am open to opportunities.
                 </motion.p>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="flex flex-col md:flex-row items-center justify-center gap-8 mb-20 text-sm tracking-widest uppercase text-muted-foreground"
+                >
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                        Available for Hire / Freelance
+                    </div>
+                    <div className="hidden md:block">•</div>
+                    <div>Abuja / Ekiti, Nigeria</div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
                     <a

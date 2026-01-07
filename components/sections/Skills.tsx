@@ -2,44 +2,57 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Code, Wifi, Zap } from "lucide-react";
+import { Code, Smartphone, Wifi, Zap, Settings, GitBranch } from "lucide-react";
 
 const skillCategories = [
     {
-        title: "Software Development",
-        icon: Code,
+        title: "Mobile Development",
+        icon: Smartphone,
         skills: [
-            { name: "Flutter & Dart", level: 95 },
-            { name: "Python Scripting", level: 80 },
-            { name: "Git & Version Control", level: 85 },
-            { name: "REST API Integration", level: 90 },
-            { name: "Mobile UI/UX Design", level: 85 }
+            { name: "Flutter (UI, State Mgmt)", level: 95 },
+            { name: "Dart (Async, OOP)", level: 90 },
+            { name: "Clean Architecture", level: 85 },
+            { name: "Custom Widgets", level: 90 },
+            { name: "Animations", level: 85 }
         ],
         color: "text-teal-400",
         barColor: "bg-teal-400"
     },
     {
-        title: "Network Infrastructure",
-        icon: Wifi,
+        title: "Web & Scripting",
+        icon: Code,
         skills: [
-            { name: "Fiber Optic Splicing", level: 90 },
-            { name: "OTDR Fault Analysis", level: 85 },
-            { name: "Microwave Radio Links", level: 80 },
-            { name: "Router Config (VLAN/IP)", level: 75 },
-            { name: "PRTG Network Monitor", level: 70 }
+            { name: "React / Next.js", level: 80 },
+            { name: "Python (Automation)", level: 75 },
+            { name: "HTML/CSS/Tailwind", level: 85 },
+            { name: "JSON Parsing", level: 90 },
+            { name: "Responsive Design", level: 85 }
         ],
         color: "text-blue-400",
         barColor: "bg-blue-400"
     },
     {
-        title: "Electrical Systems",
+        title: "Engineering Tools",
         icon: Zap,
         skills: [
-            { name: "High Voltage Grid Ops", level: 85 },
-            { name: "Substation Maintenance", level: 80 },
-            { name: "UPS & Inverter Systems", level: 90 },
+            { name: "PRTG Network Monitor", level: 80 },
+            { name: "Fiber Optics (OTDR)", level: 90 },
+            { name: "Fusion Splicing", level: 95 },
             { name: "RF Transmission", level: 75 },
-            { name: "Electronic Circuit Design", level: 70 }
+            { name: "Spectrum Analysis", level: 70 }
+        ],
+        color: "text-yellow-400",
+        barColor: "bg-yellow-400"
+    },
+    {
+        title: "DevOps & Workflow",
+        icon: GitBranch,
+        skills: [
+            { name: "Git & GitHub", level: 90 },
+            { name: "RESTful APIs", level: 85 },
+            { name: "Figma Collaboration", level: 80 },
+            { name: "VS Code", level: 95 },
+            { name: "CI/CD Basics", level: 70 }
         ],
         color: "text-purple-400",
         barColor: "bg-purple-400"
@@ -49,8 +62,6 @@ const skillCategories = [
 export function Skills() {
     return (
         <section id="skills" className="py-32 relative overflow-hidden">
-            {/* Background Glow - Removed static glow in favor of global Background */}
-
             <div className="container mx-auto px-6">
                 <div className="mb-20 text-center">
                     <motion.h2
@@ -67,7 +78,7 @@ export function Skills() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {skillCategories.map((category, index) => (
                         <motion.div
                             key={index}
@@ -81,17 +92,17 @@ export function Skills() {
                                 <div className={`p-3 rounded-xl bg-black/50 ${category.color} mr-4`}>
                                     <category.icon className="w-6 h-6" />
                                 </div>
-                                <h3 className="text-2xl font-bold">{category.title}</h3>
+                                <h3 className="text-xl font-bold">{category.title}</h3>
                             </div>
 
                             <div className="space-y-6">
                                 {category.skills.map((skill, i) => (
                                     <div key={i}>
-                                        <div className="flex justify-between text-sm mb-2">
+                                        <div className="flex justify-between text-xs mb-2">
                                             <span className="text-muted-foreground font-medium">{skill.name}</span>
                                             <span className="text-muted-foreground">{skill.level}%</span>
                                         </div>
-                                        <div className="h-2 w-full bg-black/50 rounded-full overflow-hidden">
+                                        <div className="h-1.5 w-full bg-black/50 rounded-full overflow-hidden">
                                             <motion.div
                                                 initial={{ width: 0 }}
                                                 whileInView={{ width: `${skill.level}%` }}

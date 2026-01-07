@@ -2,38 +2,38 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Smartphone, Zap, Radio } from "lucide-react";
+import { Smartphone, Zap, Radio, Award, Briefcase } from "lucide-react";
 
 const experiences = [
     {
-        role: "Mobile App Developer",
-        company: "Featuremind Limited",
-        period: "Feb 2025 - Aug 2025",
-        description: "Designed and deployed 'NisanApp' using Flutter. Focused on clean architecture, state management, and seamless UI/UX implementation.",
-        icon: Smartphone,
-        color: "text-teal-400",
-        bg: "bg-teal-400/10",
-        border: "border-teal-400/20"
+        role: "Selected for NUC Internship",
+        company: "National Universities Commission",
+        period: "2025",
+        description: "Offered a competitive internship position to manage national university databases. (Declined to pursue Software Engineering focus).",
+        icon: Award,
+        color: "text-yellow-400",
+        bg: "bg-yellow-400/10",
+        border: "border-yellow-400/20"
     },
     {
-        role: "Engineering Intern (Dual Role)",
+        role: "Dual Internship Success",
         company: "TCN & Winrock Nigeria Ltd",
-        period: "June 2024 - Aug 2024",
-        description: "Maintained high-voltage 330kV systems at TCN while simultaneously deploying fiber optic internet solutions and microwave links at Winrock.",
-        icon: Zap,
+        period: "2024",
+        description: "Successfully managed simultaneous engineering roles. Maintained 330kV high-voltage systems at TCN while deploying fiber optic internet solutions at Winrock.",
+        icon: Briefcase,
         color: "text-blue-400",
         bg: "bg-blue-400/10",
         border: "border-blue-400/20"
     },
     {
-        role: "Broadcast Engineering Intern",
-        company: "Kapital FM 92.9 (FRCN)",
-        period: "June 2023 - Aug 2023",
-        description: "Managed master control room operations, maintained UPS battery banks, and ensured signal fidelity for live RF transmissions.",
-        icon: Radio,
-        color: "text-purple-400",
-        bg: "bg-purple-400/10",
-        border: "border-purple-400/20"
+        role: "NisanApp Development",
+        company: "Personal Project",
+        period: "Ongoing",
+        description: "Conceptualized and developed a functional mobile application using Flutter, handling full lifecycle development from design to deployment.",
+        icon: Smartphone,
+        color: "text-teal-400",
+        bg: "bg-teal-400/10",
+        border: "border-teal-400/20"
     }
 ];
 
@@ -48,7 +48,7 @@ export function Experience() {
                     transition={{ type: "spring", stiffness: 100, damping: 20 }}
                     className="text-4xl md:text-7xl font-bold mb-24 text-center tracking-tighter"
                 >
-                    CAREER <span className="text-muted-foreground/30">TRAJECTORY</span>
+                    ACHIEVEMENTS & <span className="text-muted-foreground/30">HIGHLIGHTS</span>
                 </motion.h2>
 
                 <div className="max-w-5xl mx-auto relative">
