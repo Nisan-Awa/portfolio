@@ -33,9 +33,9 @@ export function Hero() {
                             transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
                             className="text-[clamp(4rem,12vw,9rem)] font-bold tracking-tighter mb-8 leading-[0.85] text-foreground"
                         >
-                            MOLLEN
+                            NISAN
                             <br />
-                            <span className="text-muted-foreground/20">DESIGN</span>
+                            <span className="text-muted-foreground/20">AWA</span>
                         </motion.h1>
 
                         <motion.div

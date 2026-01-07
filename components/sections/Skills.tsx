@@ -22,7 +22,6 @@ const skillCategories = [
         title: "Web & Scripting",
         icon: Code,
         skills: [
-            { name: "React / Next.js", level: 80 },
             { name: "Python (Automation)", level: 75 },
             { name: "HTML/CSS/Tailwind", level: 85 },
             { name: "JSON Parsing", level: 90 },
