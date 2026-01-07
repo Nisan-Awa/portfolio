@@ -64,10 +64,10 @@ export function Skills() {
             <div className="container mx-auto px-6">
                 <div className="mb-20 text-center">
                     <motion.h2
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                         className="text-5xl md:text-8xl font-bold mb-6 tracking-tighter"
                     >
                         TECHNICAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">ARSENAL</span>
@@ -81,10 +81,10 @@ export function Skills() {
                     {skillCategories.map((category, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ type: "spring", stiffness: 80, damping: 20, delay: index * 0.1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: index * 0.05 }}
                             className="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:-translate-y-2"
                         >
                             <div className="flex items-center mb-8">

@@ -38,7 +38,8 @@ export function Services() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                     className="text-center mb-20"
                 >
                     <h2 className="text-4xl md:text-7xl font-bold mb-6 tracking-tighter">
@@ -53,10 +54,10 @@ export function Services() {
                     {services.map((service, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ type: "spring", stiffness: 100, damping: 20, delay: index * 0.1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: index * 0.05 }}
                             className={`p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-500 group hover:-translate-y-2 ${service.border}`}
                         >
                             <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 transition-colors duration-500 ${service.bg}`}>

@@ -11,9 +11,9 @@ export function Hero() {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-12">
                     <div className="max-w-4xl relative z-10">
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
+                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}
                             className="flex items-center gap-4 mb-8"
                         >
                             <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase">
@@ -28,9 +28,9 @@ export function Hero() {
                         </motion.div>
 
                         <motion.h1
-                            initial={{ opacity: 0, y: 40 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
+                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
                             className="text-[clamp(4rem,12vw,9rem)] font-bold tracking-tighter mb-8 leading-[0.85] text-foreground"
                         >
                             NISAN
@@ -39,9 +39,9 @@ export function Hero() {
                         </motion.h1>
 
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.4 }}
+                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.4 }}
                             className="max-w-2xl"
                         >
                             <p className="text-xl md:text-2xl font-light text-muted-foreground leading-relaxed mb-12">
@@ -51,9 +51,9 @@ export function Hero() {
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.6 }}
+                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.6 }}
                             className="flex flex-wrap gap-6"
                         >
                             <a
@@ -77,9 +77,9 @@ export function Hero() {
 
                     {/* Hero Image */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                        transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.4 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, ease: [0.23, 1, 0.32, 1], delay: 0.4 }}
                         className="relative w-full md:w-[500px] aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/10"
                     >
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />

@@ -57,7 +57,8 @@ export function About() {
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                             className="text-6xl md:text-8xl font-bold tracking-tighter mb-12 leading-none"
                         >
                             HARDWARE <br />
@@ -70,8 +71,8 @@ export function About() {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
                             className="space-y-6 text-muted-foreground text-xl leading-relaxed max-w-lg"
                         >
                             <p>
@@ -88,9 +89,10 @@ export function About() {
                     </div>
 
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
+                        initial={{ opacity: 0, scale: 0.98 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                         className="relative h-[500px] w-full rounded-xl overflow-hidden bg-[#0c0c0c] border border-white/10 shadow-2xl font-mono text-sm md:text-base"
                     >
                         {/* Terminal Header */}

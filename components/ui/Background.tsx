@@ -17,48 +17,48 @@ export function Background() {
             {/* Moving Gradient Blobs */}
             <motion.div
                 animate={{
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 90, 0],
-                    x: [0, 100, 0],
-                    y: [0, -50, 0],
+                    scale: [1, 1.1, 1],
+                    x: [0, 50, 0],
+                    y: [0, -30, 0],
                 }}
                 transition={{
-                    duration: 20,
+                    duration: 25,
                     repeat: Infinity,
-                    ease: "linear",
+                    ease: "easeInOut",
                 }}
+                style={{ willChange: "transform" }}
                 className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen"
             />
 
             <motion.div
                 animate={{
-                    scale: [1, 1.5, 1],
-                    rotate: [0, -60, 0],
-                    x: [0, -100, 0],
-                    y: [0, 100, 0],
-                }}
-                transition={{
-                    duration: 25,
-                    repeat: Infinity,
-                    ease: "linear",
-                    delay: 2,
-                }}
-                className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] mix-blend-screen"
-            />
-
-            <motion.div
-                animate={{
-                    scale: [1, 1.3, 1],
-                    rotate: [0, 45, 0],
-                    x: [0, 50, 0],
+                    scale: [1, 1.2, 1],
+                    x: [0, -50, 0],
                     y: [0, 50, 0],
                 }}
                 transition={{
                     duration: 30,
                     repeat: Infinity,
-                    ease: "linear",
+                    ease: "easeInOut",
+                    delay: 2,
+                }}
+                style={{ willChange: "transform" }}
+                className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] mix-blend-screen"
+            />
+
+            <motion.div
+                animate={{
+                    scale: [1, 1.1, 1],
+                    x: [0, 30, 0],
+                    y: [0, 30, 0],
+                }}
+                transition={{
+                    duration: 35,
+                    repeat: Infinity,
+                    ease: "easeInOut",
                     delay: 5,
                 }}
+                style={{ willChange: "transform" }}
                 className="absolute bottom-[-20%] left-[20%] w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-[150px] mix-blend-screen"
             />
         </div>

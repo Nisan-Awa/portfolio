@@ -9,30 +9,30 @@ export function Contact() {
         <section id="contact" className="py-32 relative overflow-hidden">
             <div className="container mx-auto px-6 text-center">
                 <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                     className="text-5xl md:text-9xl font-bold mb-12 tracking-tighter"
                 >
                     READY TO <span className="text-primary">COLLABORATE?</span>
                 </motion.h2>
 
                 <motion.p
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}
                     className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 font-light"
                 >
                     Whether you need a <span className="text-foreground font-medium">sleek mobile app</span>, <span className="text-foreground font-medium">network infrastructure advice</span>, or an engineer who understands the full technical stack, I am open to opportunities.
                 </motion.p>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
                     className="flex flex-col md:flex-row items-center justify-center gap-8 mb-20 text-sm tracking-widest uppercase text-muted-foreground"
                 >
                     <div className="flex items-center gap-2">

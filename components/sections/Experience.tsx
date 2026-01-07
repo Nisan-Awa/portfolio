@@ -42,10 +42,10 @@ export function Experience() {
         <section id="experience" className="py-32 relative">
             <div className="container mx-auto px-6">
                 <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                     className="text-4xl md:text-7xl font-bold mb-24 text-center tracking-tighter"
                 >
                     ACHIEVEMENTS & <span className="text-muted-foreground/30">HIGHLIGHTS</span>
@@ -59,10 +59,10 @@ export function Experience() {
                         {experiences.map((exp, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
-                                transition={{ type: "spring", stiffness: 80, damping: 20, delay: index * 0.1 }}
+                                transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: index * 0.05 }}
                                 className={`relative md:flex items-center justify-between ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
                             >
                                 {/* Timeline Dot */}
