@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
@@ -20,7 +17,6 @@ export default function Portfolio() {
       <Experience />
       <Skills />
       <Contact />
-      <Footer />
     </main>
   );
 }

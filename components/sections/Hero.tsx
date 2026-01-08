@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export function Hero() {
     return (
@@ -14,6 +15,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}
+                            style={{ willChange: "transform, opacity" }}
                             className="flex items-center gap-4 mb-8"
                         >
                             <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase">
@@ -31,6 +33,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
+                            style={{ willChange: "transform, opacity" }}
                             className="text-[clamp(4rem,12vw,9rem)] font-bold tracking-tighter mb-8 leading-[0.85] text-foreground"
                         >
                             NISAN
@@ -42,6 +45,7 @@ export function Hero() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.4 }}
+                            style={{ willChange: "transform, opacity" }}
                             className="max-w-2xl"
                         >
                             <p className="text-xl md:text-2xl font-light text-muted-foreground leading-relaxed mb-12">
@@ -54,6 +58,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.6 }}
+                            style={{ willChange: "transform, opacity" }}
                             className="flex flex-wrap gap-6"
                         >
                             <a
@@ -80,12 +85,16 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, ease: [0.23, 1, 0.32, 1], delay: 0.4 }}
+                        style={{ willChange: "transform, opacity" }}
                         className="relative w-full md:w-[500px] aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/10"
                     >
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-                        <img
+                        <Image
                             src="/hero-portrait.png"
                             alt="Awa Nisan Tojah"
+                            width={500}
+                            height={625}
+                            priority
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                         />
 
