@@ -45,7 +45,7 @@ export function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
                     <a
-                        href="https://wa.me/2349124004256"
+                        href="https://wa.link/y47r9e"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group p-8 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 hover:bg-green-500/20 hover:border-green-500/50 transition-all duration-300 flex flex-col items-center justify-center gap-4"
