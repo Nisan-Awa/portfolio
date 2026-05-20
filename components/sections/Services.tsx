@@ -2,76 +2,83 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Smartphone, Network, Settings } from "lucide-react";
+import { Bot, BrainCircuit, GraduationCap, Network, Smartphone, Zap } from "lucide-react";
 
 const services = [
-    {
-        title: "Cross-Platform Mobile Development",
-        description: "I build high-performance mobile applications for iOS and Android using a single codebase with Flutter. I focus on pixel-perfect UIs, smooth animations, and seamless backend integration.",
-        icon: Smartphone,
-        color: "text-teal-400",
-        border: "group-hover:border-teal-400/50",
-        bg: "group-hover:bg-teal-400/10"
-    },
-    {
-        title: "Network Infrastructure Deployment",
-        description: "I have hands-on experience in deploying enterprise-grade connectivity. From configuring VLANs and static IPs on routers to physical fiber optic splicing and microwave link alignment.",
-        icon: Network,
-        color: "text-blue-400",
-        border: "group-hover:border-blue-400/50",
-        bg: "group-hover:bg-blue-400/10"
-    },
-    {
-        title: "Technical Engineering & Operations",
-        description: "With a background in power systems (TCN) and broadcast engineering (FRCN), I bring a disciplined, analytical approach to troubleshooting complex technical faults in high-stakes environments.",
-        icon: Settings,
-        color: "text-purple-400",
-        border: "group-hover:border-purple-400/50",
-        bg: "group-hover:bg-purple-400/10"
-    }
+  {
+    title: "Mobile App Development",
+    description:
+      "Cross-platform Flutter apps with clean UI, Firebase/local data, REST APIs, notifications, file handling, authentication, state management and deployment preparation.",
+    icon: Smartphone,
+  },
+  {
+    title: "Engineering Technology",
+    description:
+      "Practical exposure to power systems, broadcast chains, substation operations, RF transmission, fiber optics, microwave links and network monitoring.",
+    icon: Zap,
+  },
+  {
+    title: "AI and Data Systems",
+    description:
+      "Machine learning experimentation for energy management using feature engineering, classification, regression, baselines and time-series evaluation.",
+    icon: BrainCircuit,
+  },
+  {
+    title: "Robotics and Automation",
+    description:
+      "Interest and capstone work in systems where digital workflows, authentication and control logic connect to physical movement and office automation.",
+    icon: Bot,
+  },
+  {
+    title: "Connectivity Infrastructure",
+    description:
+      "Fiber diagnostics, OTDR testing, CPE and router configuration, static IP/VLAN concepts, PRTG monitoring and field troubleshooting.",
+    icon: Network,
+  },
+  {
+    title: "Technical Education",
+    description:
+      "Python teaching, beginner-friendly programming instruction, portfolio facilitation, student talks and practical technical communication.",
+    icon: GraduationCap,
+  },
 ];
 
 export function Services() {
-    return (
-        <section id="services" className="py-32 relative">
-            <div className="container mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                    className="text-center mb-20"
-                >
-                    <h2 className="text-4xl md:text-7xl font-bold mb-6 tracking-tighter">
-                        MY <span className="text-primary">EXPERTISE</span>
-                    </h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                        Delivering comprehensive solutions across the digital and physical spectrum.
-                    </p>
-                </motion.div>
+  return (
+    <section id="services" className="py-28 relative">
+      <div className="section-shell">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          className="mb-14"
+        >
+          <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">What I do</p>
+          <h2 className="text-4xl md:text-6xl font-black leading-tight max-w-4xl">
+            I build software with an engineering view of real-world systems.
+          </h2>
+        </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {services.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: index * 0.05 }}
-                            className={`p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-500 group hover:-translate-y-2 ${service.border}`}
-                        >
-                            <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 transition-colors duration-500 ${service.bg}`}>
-                                <service.icon className={`w-7 h-7 ${service.color}`} />
-                            </div>
-
-                            <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                            <p className="text-muted-foreground leading-relaxed">
-                                {service.description}
-                            </p>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: index * 0.04 }}
+              className="glass-panel rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/15 text-primary grid place-items-center mb-5">
+                <service.icon className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

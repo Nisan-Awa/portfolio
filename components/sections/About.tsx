@@ -1,124 +1,61 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-const terminalData = [
-    { label: "Name", value: "Awa Nisan Tojah" },
-    { label: "Role", value: "Electrical Engineer & Flutter Dev" },
-    { label: "Stack", value: "['Flutter', 'Dart', 'React', 'Python']" },
-    { label: "Location", value: "Abuja / Ekiti, Nigeria" },
-    { label: "Status", value: "Available for Hire" },
+const focusAreas = [
+  "Flutter, Dart, Firebase, SQLite, Provider and REST APIs",
+  "Power transmission, broadcast systems, RF, fiber optics and network infrastructure",
+  "Robotics, automation, AI-enabled energy systems and technical education",
 ];
 
 export function About() {
-    const [lines, setLines] = useState<string[]>([]);
-    const [isTyping, setIsTyping] = useState(true);
+  return (
+    <section id="about" className="py-28 relative overflow-hidden">
+      <div className="section-shell">
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          >
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-5">About</p>
+            <h2 className="text-5xl md:text-7xl font-black leading-none mb-8">
+              HARDWARE <br />
+              <span className="text-muted-foreground/50">MEETS</span> <br />
+              <span className="text-primary">SOFTWARE</span>
+            </h2>
+            <div className="h-1 w-28 bg-accent" />
+          </motion.div>
 
-    useEffect(() => {
-        const sequence = async () => {
-            // Initial delay
-            await new Promise(r => setTimeout(r, 1000));
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}
+            className="space-y-6 text-lg leading-relaxed text-muted-foreground"
+          >
+            <p>
+              I am Nisan Awa, also known as Awa Nisan Tojah, a final-year Electrical and Electronics Engineering student at Afe Babalola University, Ado-Ekiti, and a Flutter developer building practical mobile products.
+            </p>
+            <p>
+              My journey has moved across multiple layers of technology: broadcast engineering at FRCN, high-voltage power transmission exposure at TCN, network infrastructure and fiber work at Winrock Nigeria / Plusnet, and mobile software development at Featuremind Nigeria Limited.
+            </p>
+            <p>
+              That mix shaped how I work. I think like an engineer, design like a product builder, and execute like a developer. I care about software that is clean, usable, reliable and grounded in real problems beyond the screen.
+            </p>
 
-            // Type command
-            const command = "whoami";
-            for (let i = 0; i <= command.length; i++) {
-                setLines([`> ${command.slice(0, i)}`]);
-                await new Promise(r => setTimeout(r, 100));
-            }
-
-            await new Promise(r => setTimeout(r, 500));
-
-            // Show data line by line
-            const outputLines = [`> ${command}`];
-            setLines(outputLines);
-
-            for (const item of terminalData) {
-                await new Promise(r => setTimeout(r, 300));
-                outputLines.push(`${item.label.padEnd(10)}: ${item.value}`);
-                setLines([...outputLines]);
-            }
-
-            // Final prompt
-            await new Promise(r => setTimeout(r, 500));
-            outputLines.push("> _");
-            setLines([...outputLines]);
-            setIsTyping(false);
-        };
-
-        sequence();
-    }, []);
-
-    return (
-        <section id="about" className="py-32 relative overflow-hidden">
-            <div className="container mx-auto px-6">
-                <div className="grid md:grid-cols-2 gap-20 items-center">
-                    <div>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                            className="text-6xl md:text-8xl font-bold tracking-tighter mb-12 leading-none"
-                        >
-                            HARDWARE <br />
-                            <span className="font-light text-muted-foreground/50">MEETS</span> <br />
-                            <span className="text-primary">SOFTWARE</span>
-                        </motion.h2>
-
-                        <div className="h-1 w-32 bg-primary mb-12" />
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
-                            className="space-y-6 text-muted-foreground text-xl leading-relaxed max-w-lg"
-                        >
-                            <p>
-                                My journey sits at the intersection of <span className="text-foreground font-semibold">hardware and code</span>.
-                                Currently finishing my B.Eng in Electrical & Electronics Engineering at Afe Babalola University (ABUAD),
-                                I have developed a dual competency in physical infrastructure and digital solutions.
-                            </p>
-                            <p>
-                                My technical experience ranges from maintaining <span className="text-foreground font-semibold">330kV high-voltage transmission grids</span> at TCN
-                                to deploying fiber-optic networks for Winrock Nigeria. Simultaneously, I have honed my skills as a
-                                <span className="text-foreground font-semibold"> Mobile App Developer</span>, building cross-platform applications like 'NisanApp' using Flutter and Dart.
-                            </p>
-                        </motion.div>
-                    </div>
-
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                        className="relative h-[500px] w-full rounded-xl overflow-hidden bg-[#0c0c0c] border border-white/10 shadow-2xl font-mono text-sm md:text-base"
-                    >
-                        {/* Terminal Header */}
-                        <div className="flex items-center px-4 py-3 bg-white/5 border-b border-white/5">
-                            <div className="flex gap-2">
-                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                            </div>
-                            <div className="ml-4 text-xs text-muted-foreground">nisan@portfolio:~</div>
-                        </div>
-
-                        {/* Terminal Body */}
-                        <div className="p-6 text-green-400/90 h-full overflow-hidden">
-                            {lines.map((line, i) => (
-                                <div key={i} className="mb-2 break-all">
-                                    {line}
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Scanline Effect */}
-                        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] opacity-20" />
-                    </motion.div>
+            <div className="grid sm:grid-cols-3 gap-4 pt-4">
+              {focusAreas.map((area) => (
+                <div key={area} className="glass-panel rounded-2xl p-5 text-sm text-foreground leading-relaxed">
+                  {area}
                 </div>
+              ))}
             </div>
-        </section>
-    );
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 }

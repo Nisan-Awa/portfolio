@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const fontSans = Outfit({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-
-const fontMono = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Awa Nisan Tojah | Portfolio",
-  description: "Electrical Engineer & Mobile Developer",
+  title: "Nisan Awa | Flutter Developer & Engineering Builder",
+  description:
+    "Portfolio of Nisan Awa, a Flutter Developer and final-year Electrical & Electronics Engineering student building at the intersection of hardware, software, AI and automation.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/brand/nisan-logo.svg",
+  },
 };
 
 import { Background } from "@/components/ui/Background";
@@ -25,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} antialiased bg-background text-foreground`}
+        className="antialiased bg-background text-foreground"
       >
         <Background />
         {children}

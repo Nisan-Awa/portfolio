@@ -2,121 +2,47 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Code, Smartphone, Wifi, Zap, Settings, GitBranch } from "lucide-react";
-
-const skillCategories = [
-    {
-        title: "Mobile Development",
-        icon: Smartphone,
-        skills: [
-            { name: "Flutter (UI, State Mgmt)", level: 95 },
-            { name: "Dart (Async, OOP)", level: 90 },
-            { name: "Clean Architecture", level: 85 },
-            { name: "Custom Widgets", level: 90 },
-            { name: "Animations", level: 85 }
-        ],
-        color: "text-teal-400",
-        barColor: "bg-teal-400"
-    },
-    {
-        title: "Web & Scripting",
-        icon: Code,
-        skills: [
-            { name: "Python (Automation)", level: 75 },
-            { name: "HTML/CSS/Tailwind", level: 85 },
-            { name: "JSON Parsing", level: 90 },
-            { name: "Responsive Design", level: 85 }
-        ],
-        color: "text-blue-400",
-        barColor: "bg-blue-400"
-    },
-    {
-        title: "Engineering Tools",
-        icon: Zap,
-        skills: [
-            { name: "PRTG Network Monitor", level: 80 },
-            { name: "Fiber Optics (OTDR)", level: 90 },
-            { name: "Fusion Splicing", level: 95 },
-            { name: "RF Transmission", level: 75 },
-            { name: "Spectrum Analysis", level: 70 }
-        ],
-        color: "text-yellow-400",
-        barColor: "bg-yellow-400"
-    },
-    {
-        title: "DevOps & Workflow",
-        icon: GitBranch,
-        skills: [
-            { name: "Git & GitHub", level: 90 },
-            { name: "RESTful APIs", level: 85 },
-            { name: "Figma Collaboration", level: 80 },
-            { name: "VS Code", level: 95 },
-            { name: "CI/CD Basics", level: 70 }
-        ],
-        color: "text-purple-400",
-        barColor: "bg-purple-400"
-    }
-];
+import { skillGroups } from "@/lib/portfolio-data";
 
 export function Skills() {
-    return (
-        <section id="skills" className="py-32 relative overflow-hidden">
-            <div className="container mx-auto px-6">
-                <div className="mb-20 text-center">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                        className="text-5xl md:text-8xl font-bold mb-6 tracking-tighter"
-                    >
-                        TECHNICAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">ARSENAL</span>
-                    </motion.h2>
-                    <p className="text-muted-foreground tracking-[0.5em] uppercase text-sm">
-                        Mastery over bits & atoms
-                    </p>
-                </div>
+  return (
+    <section id="skills" className="py-28 relative overflow-hidden">
+      <div className="section-shell">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          className="mb-14"
+        >
+          <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">Skills</p>
+          <h2 className="text-4xl md:text-6xl font-black leading-tight max-w-4xl">
+            Tools and concepts I use across app development and engineering systems.
+          </h2>
+        </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {skillCategories.map((category, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: index * 0.05 }}
-                            className="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all duration-300 group hover:-translate-y-2"
-                        >
-                            <div className="flex items-center mb-8">
-                                <div className={`p-3 rounded-xl bg-black/50 ${category.color} mr-4`}>
-                                    <category.icon className="w-6 h-6" />
-                                </div>
-                                <h3 className="text-xl font-bold">{category.title}</h3>
-                            </div>
-
-                            <div className="space-y-6">
-                                {category.skills.map((skill, i) => (
-                                    <div key={i}>
-                                        <div className="flex justify-between text-xs mb-2">
-                                            <span className="text-muted-foreground font-medium">{skill.name}</span>
-                                            <span className="text-muted-foreground">{skill.level}%</span>
-                                        </div>
-                                        <div className="h-1.5 w-full bg-black/50 rounded-full overflow-hidden">
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                whileInView={{ width: `${skill.level}%` }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 + (i * 0.1) }}
-                                                className={`h-full rounded-full ${category.barColor} shadow-[0_0_10px_rgba(255,255,255,0.2)]`}
-                                            />
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skillGroups.map((group, index) => (
+            <motion.article
+              key={group.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: index * 0.04 }}
+              className="glass-panel rounded-2xl p-6"
+            >
+              <h3 className="text-xl font-black mb-5">{group.title}</h3>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span key={item} className="px-3 py-2 rounded-full bg-secondary text-muted-foreground text-sm">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
