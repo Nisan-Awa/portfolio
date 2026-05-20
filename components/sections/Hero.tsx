@@ -8,7 +8,7 @@ import { featuredStats } from "@/lib/portfolio-data";
 
 export function Hero() {
     return (
-        <section id="home" className="min-h-screen flex flex-col justify-center pt-32 pb-10 relative overflow-hidden">
+        <section id="home" className="min-h-[100svh] md:min-h-screen flex flex-col justify-center pt-28 md:pt-32 pb-12 md:pb-10 relative overflow-hidden">
             <div className="section-shell">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-12">
                     <div className="max-w-4xl relative z-10">
@@ -35,7 +35,7 @@ export function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
                             style={{ willChange: "transform, opacity" }}
-                            className="text-[clamp(3.6rem,11vw,8.4rem)] font-bold mb-8 leading-[0.88] text-foreground"
+                            className="text-[clamp(4rem,22vw,6.5rem)] md:text-[clamp(3.6rem,11vw,8.4rem)] font-bold mb-7 md:mb-8 leading-[0.86] md:leading-[0.88] text-foreground"
                         >
                             NISAN
                             <br />
@@ -49,10 +49,10 @@ export function Hero() {
                             style={{ willChange: "transform, opacity" }}
                             className="max-w-2xl"
                         >
-                            <p className="text-xl md:text-2xl font-light text-muted-foreground leading-relaxed mb-8">
+                            <p className="text-lg sm:text-xl md:text-2xl font-light text-muted-foreground leading-relaxed mb-6 md:mb-8">
                                 I am a <span className="text-foreground font-medium">final-year Electrical & Electronics Engineering student</span> and <span className="text-foreground font-medium">Flutter Developer</span> building at the intersection of <span className="text-primary font-bold">hardware systems</span>, <span className="text-accent font-bold">intelligent software</span>, automation and user-centered digital products.
                             </p>
-                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-12 max-w-2xl">
+                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 md:mb-12 max-w-2xl">
                                 From working around 330 kV transmission infrastructure to building Firebase-backed mobile apps, I bring engineering discipline, product thinking and practical software execution into one portfolio.
                             </p>
                         </motion.div>
@@ -62,18 +62,18 @@ export function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.6 }}
                             style={{ willChange: "transform, opacity" }}
-                            className="flex flex-wrap gap-4"
+                            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
                         >
                             <a
                                 href="#contact"
-                                className="group px-8 py-4 bg-primary text-primary-foreground font-bold text-base rounded-full hover:bg-primary/90 transition-all flex items-center gap-3 hover:scale-105 active:scale-95"
+                                className="group w-full sm:w-auto justify-center px-8 py-4 bg-primary text-primary-foreground font-bold text-base rounded-full hover:bg-primary/90 transition-all flex items-center gap-3 hover:scale-105 active:scale-95"
                             >
                                 Contact Me
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </a>
                             <a
                                 href="/downloads/apps/nisanapp-cloud-release.apk"
-                                className="px-8 py-4 border border-border bg-card/80 backdrop-blur-sm text-foreground font-bold text-base rounded-full hover:bg-secondary transition-all flex items-center gap-3 hover:scale-105 active:scale-95"
+                                className="w-full sm:w-auto justify-center px-8 py-4 border border-border bg-card/80 backdrop-blur-sm text-foreground font-bold text-base rounded-full hover:bg-secondary transition-all flex items-center gap-3 hover:scale-105 active:scale-95"
                             >
                                 <Download className="w-5 h-5" />
                                 NisanApp APK
@@ -82,7 +82,7 @@ export function Hero() {
                                 href="https://github.com/Nisan-Awa"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-8 py-4 border border-border bg-card/80 backdrop-blur-sm text-foreground font-bold text-base rounded-full hover:bg-secondary transition-all flex items-center gap-3 hover:scale-105 active:scale-95"
+                                className="w-full sm:w-auto justify-center px-8 py-4 border border-border bg-card/80 backdrop-blur-sm text-foreground font-bold text-base rounded-full hover:bg-secondary transition-all flex items-center gap-3 hover:scale-105 active:scale-95"
                             >
                                 <Github className="w-5 h-5" />
                                 GitHub
@@ -91,7 +91,7 @@ export function Hero() {
                                 href="https://www.linkedin.com/in/nisan-awa-tojah"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-8 py-4 border border-border bg-card/80 backdrop-blur-sm text-foreground font-bold text-base rounded-full hover:bg-secondary transition-all flex items-center gap-3 hover:scale-105 active:scale-95"
+                                className="w-full sm:w-auto justify-center px-8 py-4 border border-border bg-card/80 backdrop-blur-sm text-foreground font-bold text-base rounded-full hover:bg-secondary transition-all flex items-center gap-3 hover:scale-105 active:scale-95"
                             >
                                 <Linkedin className="w-5 h-5" />
                                 LinkedIn
@@ -127,7 +127,7 @@ export function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 1 }}
-                    className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4"
+                    className="mt-12 md:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
                 >
                     {featuredStats.map((stat) => (
                         <div key={stat.label} className="glass-panel rounded-2xl p-5">

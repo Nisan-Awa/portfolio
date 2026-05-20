@@ -38,7 +38,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground pt-32 pb-20">
+    <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 pb-16 md:pb-20">
       <Header />
       <article className="section-shell">
         <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-bold text-primary mb-8">
@@ -59,17 +59,17 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 {project.year}
               </span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black leading-none mb-6">{project.title}</h1>
-            <p className="text-2xl text-muted-foreground mb-6">{project.subtitle}</p>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-none mb-5 md:mb-6">{project.title}</h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-5 md:mb-6">{project.subtitle}</p>
             <p className="text-lg text-muted-foreground leading-relaxed">{project.summary}</p>
 
             {project.downloads && (
-              <div className="flex flex-wrap gap-3 mt-8">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-8">
                 {project.downloads.map((download) => (
                   <a
                     key={download.href}
                     href={download.href}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-bold"
+                    className="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-bold"
                   >
                     <Download className="w-4 h-4" />
                     {download.label}
@@ -101,7 +101,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <h2 className="text-2xl font-black mb-6">Screenshots</h2>
             <div className="flex gap-4 overflow-x-auto pb-3">
               {project.images.map((image, index) => (
-                <div key={image} className="relative shrink-0 w-[230px] md:w-[280px] aspect-[9/18.5] rounded-[2rem] overflow-hidden border border-border bg-background">
+                <div key={image} className="relative shrink-0 w-[74vw] sm:w-[230px] md:w-[280px] aspect-[9/18.5] rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border border-border bg-background">
                   <Image src={image} alt={`${project.title} screenshot ${index + 1}`} fill className="object-cover" />
                 </div>
               ))}

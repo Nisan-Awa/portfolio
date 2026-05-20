@@ -27,13 +27,13 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-          className="glass-panel rounded-[2rem] p-8 md:p-12 text-center"
+          className="glass-panel rounded-[1.5rem] md:rounded-[2rem] p-5 sm:p-8 md:p-12 text-center"
         >
           <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-5">Contact</p>
-          <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-7xl font-black mb-6 md:mb-8 leading-tight">
             Open to mobile development, software internships and engineering technology roles.
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-10">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8 md:mb-10">
             I am focused on Flutter engineering, Firebase-backed systems, AI-enabled engineering solutions, robotics integration and products that connect hardware, software and human needs.
           </p>
 

@@ -44,10 +44,10 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: index * 0.05 }}
-              className="glass-panel rounded-[1.5rem] overflow-hidden"
+              className="glass-panel rounded-[1.25rem] md:rounded-[1.5rem] overflow-hidden"
             >
               <div className="grid lg:grid-cols-[1fr_1.1fr] gap-0">
-                <div className="p-6 md:p-8 flex flex-col justify-between min-h-[420px]">
+                <div className="p-5 sm:p-6 md:p-8 flex flex-col justify-between md:min-h-[420px]">
                   <div>
                     <div className="flex flex-wrap gap-2 mb-5">
                       <span className="px-3 py-1 rounded-full bg-primary/15 text-primary text-xs font-bold uppercase tracking-wider">
@@ -57,8 +57,8 @@ export function Projects() {
                         {project.status}
                       </span>
                     </div>
-                    <h3 className="text-3xl md:text-5xl font-black mb-4">{project.title}</h3>
-                    <p className="text-xl text-muted-foreground mb-5">{project.subtitle}</p>
+                    <h3 className="text-3xl md:text-5xl font-black mb-3 md:mb-4">{project.title}</h3>
+                    <p className="text-lg md:text-xl text-muted-foreground mb-4 md:mb-5">{project.subtitle}</p>
                     <p className="text-muted-foreground leading-relaxed mb-6">{project.summary}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.stack.map((item) => (
@@ -69,10 +69,10 @@ export function Projects() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-3 mt-8">
+                  <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-7 md:mt-8">
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-bold hover:opacity-90"
+                      className="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-bold hover:opacity-90"
                     >
                       Case study
                       <ArrowUpRight className="w-4 h-4" />
@@ -81,7 +81,7 @@ export function Projects() {
                       <a
                         key={download.href}
                         href={download.href}
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border bg-card hover:bg-secondary font-bold"
+                        className="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-full border border-border bg-card hover:bg-secondary font-bold"
                       >
                         <Download className="w-4 h-4" />
                         APK
@@ -90,13 +90,13 @@ export function Projects() {
                   </div>
                 </div>
 
-                <div className="bg-secondary/50 p-6 md:p-8 overflow-hidden">
+                <div className="bg-secondary/50 p-4 sm:p-6 md:p-8 overflow-hidden">
                   {project.images.length > 0 ? (
                     <div className="flex gap-4 overflow-x-auto pb-2">
                       {project.images.slice(0, 3).map((image, imageIndex) => (
                         <div
                           key={image}
-                          className="relative shrink-0 w-[210px] md:w-[250px] aspect-[9/18.5] rounded-[2rem] overflow-hidden border border-border bg-background shadow-2xl"
+                          className="relative shrink-0 w-[72vw] sm:w-[210px] md:w-[250px] aspect-[9/18.5] rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border border-border bg-background shadow-2xl"
                           style={{ transform: `translateY(${imageIndex % 2 === 0 ? 0 : 28}px)` }}
                         >
                           <Image src={image} alt={`${project.title} screenshot ${imageIndex + 1}`} fill className="object-cover" />

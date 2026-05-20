@@ -10,15 +10,15 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground pt-32 pb-20">
+    <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 pb-16 md:pb-20">
       <Header />
       <section className="section-shell">
         <div className="mb-12">
           <Link href="/#projects" className="text-sm font-bold text-primary">
             Back to home
           </Link>
-          <h1 className="text-5xl md:text-7xl font-black mt-5 mb-6">Projects</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mt-5 mb-5 md:mb-6">Projects</h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
             A broader index of my mobile apps, engineering projects, AI experiments, robotics work and product leadership experiences.
           </p>
         </div>

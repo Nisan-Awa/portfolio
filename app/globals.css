@@ -103,6 +103,16 @@ html.dark {
   box-shadow: 0 24px 80px color-mix(in srgb, #000000 12%, transparent);
 }
 
+@media (max-width: 640px) {
+  .section-shell {
+    width: min(100% - 1rem, 1180px);
+  }
+
+  .glass-panel {
+    box-shadow: 0 14px 48px color-mix(in srgb, #000000 10%, transparent);
+  }
+}
+
 ::selection {
   background-color: var(--primary);
   color: var(--primary-foreground);
