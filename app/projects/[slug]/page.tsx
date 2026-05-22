@@ -37,6 +37,8 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const isWideVisual = project.imageLayout === "wide";
+
   return (
     <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 pb-16 md:pb-20">
       <Header />
@@ -106,13 +108,24 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         </header>
 
         <section className="glass-panel rounded-[1.5rem] p-6 mb-10">
-          <h2 className="text-2xl font-black mb-6">{project.images.length > 0 ? "Screenshots" : "Visual proof"}</h2>
+          <h2 className="text-2xl font-black mb-6">{project.images.length > 0 && !isWideVisual ? "Screenshots" : "Visual proof"}</h2>
           {project.images.length > 0 ? (
-            <div className="flex gap-4 overflow-x-auto pb-3">
+            <div className={isWideVisual ? "grid md:grid-cols-2 gap-4" : "flex gap-4 overflow-x-auto pb-3"}>
               {project.images.map((image, index) => (
-                <div key={image} className="shrink-0 w-[74vw] sm:w-[230px] md:w-[280px]">
-                  <div className="relative aspect-[9/18.5] rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border border-border bg-background">
-                    <Image src={image} alt={`${project.title} screenshot ${index + 1}`} fill className="object-cover" />
+                <div key={image} className={isWideVisual ? "" : "shrink-0 w-[74vw] sm:w-[230px] md:w-[280px]"}>
+                  <div
+                    className={
+                      isWideVisual
+                        ? "relative aspect-[4/3] rounded-2xl overflow-hidden border border-border bg-background"
+                        : "relative aspect-[9/18.5] rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border border-border bg-background"
+                    }
+                  >
+                    <Image
+                      src={image}
+                      alt={`${project.title} visual ${index + 1}`}
+                      fill
+                      className={isWideVisual ? "object-contain p-2" : "object-cover"}
+                    />
                   </div>
                   {project.imageCaptions?.[index] && (
                     <p className="text-sm text-muted-foreground leading-relaxed mt-3">{project.imageCaptions[index]}</p>

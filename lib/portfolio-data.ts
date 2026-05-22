@@ -13,6 +13,7 @@ export type Project = {
   details: string[];
   highlights: string[];
   images: string[];
+  imageLayout?: "phone" | "wide";
   imageCaptions?: string[];
   caseStudy?: {
     problem: string;
@@ -84,12 +85,12 @@ export const projects: Project[] = [
       {
         label: "Cloud version APK",
         href: "/downloads/apps/nisanapp-cloud-release.apk",
-        note: "Android APK demo build from StudioProjects/hellome. Install manually on Android devices. This version points toward online save/sync workflows.",
+        note: "Android APK demo build for manual installation on Android devices. This version points toward online save/sync workflows.",
       },
       {
         label: "Local/offline version APK",
         href: "/downloads/apps/nisanapp-local-release.apk",
-        note: "Android APK demo build from StudioProjects/nisanapp. Install manually on Android devices. This version stores user data on the mobile device.",
+        note: "Android APK demo build for manual installation on Android devices. This version stores user data on the mobile device.",
       },
     ],
   },
@@ -187,11 +188,11 @@ export const projects: Project[] = [
       built:
         "I built a Flutter real-estate management app with visitor registration, access-code thinking, CCTV/support entry points, notifications, documents and theme options.",
       challenge:
-        "The project required adapting a personal build into a client-facing product where feedback, naming, features and delivery builds mattered.",
+        "The main challenge was organizing many estate workflows into one app while keeping role-based admin/client access, local persistence, secure authentication, provider state and cross-platform delivery understandable.",
       learned:
-        "I learned how client requests affect product structure, naming, UI clarity and build delivery across Android and desktop targets.",
+        "I learned how to model estate data with SQLite, connect secure local auth to admin/client routes, generate visitor gate-pass codes, manage complaints/notifications and support documents, WhatsApp links and theme modes.",
       impact:
-        "DiamondCity is strong portfolio proof because it moves beyond practice UI into stakeholder-facing software delivery.",
+        "The project became a fuller estate portal demo: admins can manage properties, owners, visitors and complaints while clients can access documents, submit complaints and interact with estate support workflows.",
     },
     downloads: [
       {
@@ -222,7 +223,19 @@ export const projects: Project[] = [
       "Firestore/Firebase Realtime Database planning and web/mobile integration direction.",
       "A strong hardware-meets-software capstone project.",
     ],
-    images: [],
+    images: [
+      "/assets/screenshots/robot/robot-01.png",
+      "/assets/screenshots/robot/robot-02.png",
+      "/assets/screenshots/robot/robot-03.png",
+      "/assets/screenshots/robot/robot-04.png",
+    ],
+    imageLayout: "wide",
+    imageCaptions: [
+      "Rendered exterior view of the automated file-delivery robot body.",
+      "Angled CAD render showing the chassis, wheel position and enclosure form.",
+      "Exploded CAD view showing internal structure and component placement.",
+      "Technical drawing with projected views and key dimensions.",
+    ],
     caseStudy: {
       problem:
         "Office file movement can interrupt staff workflows and make physical handoff harder to track across departments.",
@@ -258,6 +271,7 @@ export const projects: Project[] = [
       "Handled results carefully with baseline and validation awareness to reduce leakage risk.",
     ],
     images: [],
+    imageLayout: "wide",
     caseStudy: {
       problem:
         "Idle and standby appliances can waste power quietly across homes, offices and institutions.",
@@ -292,7 +306,11 @@ export const projects: Project[] = [
       "Team included frontend, backend, product design, AI/ML and product/business roles.",
       "Also pitched at Campus to Career 2.0 and received cash-prize recognition.",
     ],
-    images: [],
+    images: ["/assets/screenshots/ceresvera/ceresvera-01.jpeg"],
+    imageLayout: "wide",
+    imageCaptions: [
+      "CeresVera pitch moment during the Interswitch Pan-African Discovery Series at ABUAD.",
+    ],
     caseStudy: {
       problem:
         "Smallholder farmers often lose crops because pests, diseases and crop stress are not identified early enough.",

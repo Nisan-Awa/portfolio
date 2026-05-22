@@ -55,7 +55,12 @@ export default function ProjectsPage() {
                       </div>
                       {project.images[0] && (
                         <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-border bg-secondary mb-5">
-                          <Image src={project.images[0]} alt={`${project.title} preview`} fill className="object-cover object-top" />
+                          <Image
+                            src={project.images[0]}
+                            alt={`${project.title} preview`}
+                            fill
+                            className={project.imageLayout === "wide" ? "object-contain p-2" : "object-cover object-top"}
+                          />
                         </div>
                       )}
                       <h3 className="text-2xl font-black mb-2">{project.title}</h3>
