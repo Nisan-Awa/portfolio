@@ -6,11 +6,21 @@ export type Project = {
   year: string;
   status: string;
   featured?: boolean;
+  group: "Flagship Apps" | "Engineering, AI and Product" | "UI Concepts and Practice Builds";
+  icon?: string;
   stack: string[];
   summary: string;
   details: string[];
   highlights: string[];
   images: string[];
+  imageCaptions?: string[];
+  caseStudy?: {
+    problem: string;
+    built: string;
+    challenge: string;
+    learned: string;
+    impact: string;
+  };
   downloads?: { label: string; href: string; note?: string }[];
 };
 
@@ -30,13 +40,15 @@ export const projects: Project[] = [
     year: "2025-2026",
     status: "Flagship project",
     featured: true,
+    group: "Flagship Apps",
+    icon: "/assets/app-icons/nisanapp.png",
     stack: ["Flutter", "Dart", "SQLite", "Provider", "Notifications", "File Handling"],
     summary:
       "A Flutter-based productivity ecosystem that combines task management, notes, spaced repetition, focus tools, file attachments, notifications, gamification, and offline-first local storage into one clean mobile experience.",
     details: [
       "NisanApp began as a task manager and evolved into a broader productivity system for tasks, notes, learning workflows, focus sessions, statistics, settings, and calendar views.",
       "The project strengthened my understanding of local persistence, SQLite modeling, parent-child task relationships, notification scheduling, file metadata, media previews, share flows, and long-term product iteration.",
-      "It is positioned as my flagship mobile project because it shows product thinking, Flutter architecture, UI refinement, and practical personal initiative.",
+      "It is positioned as my flagship mobile project because it shows product thinking, Flutter architecture, UI refinement, practical personal initiative, and the difference between cloud-sync and local/offline app delivery.",
     ],
     highlights: [
       "Tasks, subtasks, notes, calendar, focus hub, stopwatch and countdown tools.",
@@ -48,17 +60,36 @@ export const projects: Project[] = [
       "/assets/screenshots/nisanapp/nisanapp-01.jpeg",
       "/assets/screenshots/nisanapp/nisanapp-02.jpeg",
       "/assets/screenshots/nisanapp/nisanapp-03.jpeg",
+      "/assets/screenshots/nisanapp/nisanapp-04.jpeg",
     ],
+    imageCaptions: [
+      "Task dashboard and productivity overview.",
+      "Notes, planning and learning workflow.",
+      "Focus tools, utilities and app navigation.",
+      "Calendar quick-capture flow for tasks, notes and planning.",
+    ],
+    caseStudy: {
+      problem:
+        "Students and builders often split tasks, notes, focus sessions, learning reminders and file references across too many tools.",
+      built:
+        "I built a Flutter productivity ecosystem with tasks, subtasks, notes, calendar planning, focus tools, notifications, file attachments, media preview and gamified progress.",
+      challenge:
+        "The main technical challenge was keeping the app expandable while handling local data relationships, reminders, attachments and multiple productivity flows without making the UI feel crowded.",
+      learned:
+        "I learned how database structure, notification timing, offline-first decisions and feature hierarchy affect the everyday feel of a mobile product.",
+      impact:
+        "NisanApp now acts as my strongest proof of Flutter product development because it combines useful features, long-term iteration and practical architecture.",
+    },
     downloads: [
       {
-        label: "Download NisanApp Cloud APK",
+        label: "Cloud version APK",
         href: "/downloads/apps/nisanapp-cloud-release.apk",
-        note: "From StudioProjects/hellome. Includes online save/sync direction.",
+        note: "Android APK demo build from StudioProjects/hellome. Install manually on Android devices. This version points toward online save/sync workflows.",
       },
       {
-        label: "Download NisanApp Local APK",
+        label: "Local/offline version APK",
         href: "/downloads/apps/nisanapp-local-release.apk",
-        note: "Local-device storage variant.",
+        note: "Android APK demo build from StudioProjects/nisanapp. Install manually on Android devices. This version stores user data on the mobile device.",
       },
     ],
   },
@@ -70,6 +101,8 @@ export const projects: Project[] = [
     year: "2026",
     status: "Featured project",
     featured: true,
+    group: "Flagship Apps",
+    icon: "/assets/app-icons/lunacycle.png",
     stack: ["Flutter", "Dart", "Health UI", "Calendar UX", "Local Data"],
     summary:
       "A cycle tracking app with a soft, mobile-first interface for period estimates, cycle day tracking, insights, calendar views and self-care flows.",
@@ -89,10 +122,29 @@ export const projects: Project[] = [
       "/assets/screenshots/lunacycle/lunacycle-03.jpeg",
       "/assets/screenshots/lunacycle/lunacycle-04.jpeg",
     ],
+    imageCaptions: [
+      "Cycle overview with soft health-focused visual language.",
+      "Calendar and period tracking flow.",
+      "Insights and self-care navigation.",
+      "Mobile-first dashboard for cycle awareness.",
+    ],
+    caseStudy: {
+      problem:
+        "Health-tracking apps need to feel clear, private and calm while still giving useful daily information.",
+      built:
+        "I built a cycle-tracking mobile experience with period estimates, calendar thinking, insights, phase display and self-care navigation.",
+      challenge:
+        "The design challenge was balancing a soft visual identity with direct, readable information that a user can understand quickly.",
+      learned:
+        "LunaCycle strengthened my sensitivity to visual tone, privacy-aware product design and mobile health UI patterns.",
+      impact:
+        "It shows that I can build beyond productivity tools into more personal, user-centered mobile experiences.",
+    },
     downloads: [
       {
-        label: "Download LunaCycle APK",
+        label: "Download Android APK",
         href: "/downloads/apps/lunacycle-release.apk",
+        note: "Android APK demo build. Install manually on Android devices.",
       },
     ],
   },
@@ -104,6 +156,8 @@ export const projects: Project[] = [
     year: "2025",
     status: "Featured project",
     featured: true,
+    group: "Flagship Apps",
+    icon: "/assets/app-icons/diamondcity.png",
     stack: ["Flutter", "Firebase Thinking", "SQLite", "Notifications", "Windows Build"],
     summary:
       "A real estate management solution with access code generation, visitor registration, CCTV access interface, WhatsApp support, cloud-sync thinking, notifications and multi-theme support.",
@@ -122,10 +176,28 @@ export const projects: Project[] = [
       "/assets/screenshots/diamondcity/diamondcity-02.png",
       "/assets/screenshots/diamondcity/diamondcity-03.png",
     ],
+    imageCaptions: [
+      "Estate dashboard and property management entry point.",
+      "Visitor, access and resident-facing workflows.",
+      "Settings and estate administration screens.",
+    ],
+    caseStudy: {
+      problem:
+        "Estate and facility teams need clearer digital workflows for visitors, access, documents, complaints and resident support.",
+      built:
+        "I built a Flutter real-estate management app with visitor registration, access-code thinking, CCTV/support entry points, notifications, documents and theme options.",
+      challenge:
+        "The project required adapting a personal build into a client-facing product where feedback, naming, features and delivery builds mattered.",
+      learned:
+        "I learned how client requests affect product structure, naming, UI clarity and build delivery across Android and desktop targets.",
+      impact:
+        "DiamondCity is strong portfolio proof because it moves beyond practice UI into stakeholder-facing software delivery.",
+    },
     downloads: [
       {
-        label: "Download DiamondCity APK",
+        label: "Download Android APK",
         href: "/downloads/apps/diamondcity-release.apk",
+        note: "Android APK demo build. Install manually on Android devices.",
       },
     ],
   },
@@ -136,6 +208,7 @@ export const projects: Project[] = [
     category: "Robotics",
     year: "2026",
     status: "Capstone",
+    group: "Engineering, AI and Product",
     stack: ["Robotics", "Automation", "Firebase/Web Integration", "Authentication"],
     summary:
       "Final-year engineering project focused on improving an autonomous office file-delivery robot with better workflow design, authentication, delivery request handling and digital integration.",
@@ -150,6 +223,18 @@ export const projects: Project[] = [
       "A strong hardware-meets-software capstone project.",
     ],
     images: [],
+    caseStudy: {
+      problem:
+        "Office file movement can interrupt staff workflows and make physical handoff harder to track across departments.",
+      built:
+        "My final-year project direction improves an automated file-delivery robot with digital request handling, location selection, authentication and delivery workflow thinking.",
+      challenge:
+        "The main challenge is connecting physical movement with secure digital instructions, status visibility and real office usability.",
+      learned:
+        "The project deepened my interest in robotics systems that combine embedded hardware, web/mobile control and human-centered workflow design.",
+      impact:
+        "It is the clearest proof of my hardware-meets-software identity because the solution crosses robotics, automation, authentication and software integration.",
+    },
   },
   {
     slug: "ai-smart-energy-management",
@@ -158,6 +243,7 @@ export const projects: Project[] = [
     category: "AI/ML",
     year: "2026",
     status: "Research project",
+    group: "Engineering, AI and Product",
     stack: ["Python", "pandas", "scikit-learn", "RandomForest", "Time-Series"],
     summary:
       "A machine learning project focused on detecting appliance states and predicting energy consumption patterns to reduce idle power waste.",
@@ -172,6 +258,18 @@ export const projects: Project[] = [
       "Handled results carefully with baseline and validation awareness to reduce leakage risk.",
     ],
     images: [],
+    caseStudy: {
+      problem:
+        "Idle and standby appliances can waste power quietly across homes, offices and institutions.",
+      built:
+        "I experimented with appliance-state classification and energy prediction using Python, pandas, scikit-learn, engineered features, baselines and time-series validation.",
+      challenge:
+        "Energy datasets can produce misleadingly high scores if splits are too easy, so baseline comparison and validation awareness were important.",
+      learned:
+        "I learned how electrical engineering context can guide AI feature engineering, model evaluation and practical energy optimization thinking.",
+      impact:
+        "The project shows research-oriented AI/ML ability connected to a real engineering problem instead of a generic model demo.",
+    },
   },
   {
     slug: "ceresvera",
@@ -180,6 +278,7 @@ export const projects: Project[] = [
     category: "Product Leadership",
     year: "2026",
     status: "3rd place team",
+    group: "Engineering, AI and Product",
     stack: ["Product Strategy", "AI", "Agriculture", "Pitching", "Business Model"],
     summary:
       "An AI-first platform for smallholder farmers, designed to detect crop issues early and connect farmers with verified agricultural experts through secure consultation systems.",
@@ -194,6 +293,18 @@ export const projects: Project[] = [
       "Also pitched at Campus to Career 2.0 and received cash-prize recognition.",
     ],
     images: [],
+    caseStudy: {
+      problem:
+        "Smallholder farmers often lose crops because pests, diseases and crop stress are not identified early enough.",
+      built:
+        "As Product/Business Lead, I helped shape CeresVera as an AI-first platform for crop issue detection, verified expert access and escrow-backed consultation.",
+      challenge:
+        "The challenge was communicating the product value clearly across agriculture, AI, trust, expert verification and business sustainability.",
+      learned:
+        "I learned how product direction, team collaboration and pitch structure can be as important as code in innovation settings.",
+      impact:
+        "The team placed 3rd at the Interswitch Pan-African Discovery Series, giving the project strong public validation.",
+    },
   },
   {
     slug: "habitly",
@@ -202,6 +313,8 @@ export const projects: Project[] = [
     category: "Flutter App",
     year: "2025",
     status: "Learning project",
+    group: "UI Concepts and Practice Builds",
+    icon: "/assets/app-icons/habitly.png",
     stack: ["Flutter", "Local Storage", "Productivity UI"],
     summary:
       "A habit-tracking app designed to help users build consistency and monitor progress through simple mobile workflows.",
@@ -218,6 +331,8 @@ export const projects: Project[] = [
     category: "Flutter App",
     year: "2025",
     status: "Concept",
+    group: "UI Concepts and Practice Builds",
+    icon: "/assets/app-icons/nisanexpress.png",
     stack: ["Flutter", "Mobile Commerce", "Product UI"],
     summary:
       "An e-commerce app concept built to practice product listing, navigation, shopping interface structure and responsive mobile commerce design.",
@@ -232,6 +347,8 @@ export const projects: Project[] = [
     category: "Flutter UI",
     year: "2025",
     status: "Interface study",
+    group: "UI Concepts and Practice Builds",
+    icon: "/assets/app-icons/nisanchat.png",
     stack: ["Flutter", "Messaging UI", "Mobile UX"],
     summary:
       "A messaging interface project with screens for chats, statuses, calls, contacts and modern communication patterns.",
@@ -246,6 +363,8 @@ export const projects: Project[] = [
     category: "Flutter App",
     year: "2025",
     status: "Practice projects",
+    group: "UI Concepts and Practice Builds",
+    icon: "/assets/app-icons/weather-clima.png",
     stack: ["Flutter", "REST APIs", "JSON", "Async Dart"],
     summary:
       "Weather applications built to practice API integration, location-based data, asynchronous programming and JSON parsing.",
@@ -260,6 +379,8 @@ export const projects: Project[] = [
     category: "Game / Education",
     year: "2025",
     status: "Learning app",
+    group: "UI Concepts and Practice Builds",
+    icon: "/assets/app-icons/chukwuka.png",
     stack: ["Flutter", "Game Logic", "Education"],
     summary:
       "An educational math game with directional controls, levels, scoring and interactive learning mechanics.",
@@ -270,6 +391,13 @@ export const projects: Project[] = [
 ];
 
 export const experiences = [
+  {
+    role: "Pfizer Advanced AI Document Intelligence Extern",
+    company: "Extern / Pfizer",
+    period: "2026",
+    description:
+      "Selected for an AI-powered document insights and data extraction externship focused on Python pipelines, PDF extraction, OCR for pharmaceutical labels, AI model testing and RAG-based search across compliance-document workflows.",
+  },
   {
     role: "Mobile App Developer Intern",
     company: "Featuremind Nigeria Limited",
@@ -308,6 +436,7 @@ export const experiences = [
 ];
 
 export const achievements = [
+  "Selected for the Pfizer Advanced: AI-Powered Document Insights & Data Extraction Externship with Extern.",
   "3rd Place - Interswitch Pan-African Discovery Series with Team CeresVera.",
   "Campus to Career 2.0 cash-prize recognition after pitching CeresVera at ABUAD.",
   "Selected for a competitive NUC internship opportunity around national university database management.",
@@ -344,6 +473,16 @@ export const skillGroups = [
 ];
 
 export const certificates = [
+  {
+    title: "Featuremind Flutter Development Internship",
+    image: "/assets/certificates/featuremind.jpg",
+    description: "Internship certificate from Featuremind Nigeria Limited for Flutter development experience during the 2025 SIWES placement.",
+  },
+  {
+    title: "Pfizer Advanced AI Document Intelligence Externship",
+    image: "/assets/certificates/pfizer-externship-announcement.png",
+    description: "Externship announcement for AI-powered pharmaceutical document processing, PDF extraction, OCR, Python pipelines and RAG-based search workflows.",
+  },
   {
     title: "ASVA Portfolio Workshop",
     image: "/assets/certificates/asva.jpg",

@@ -12,15 +12,15 @@ const contactLinks = [
 ];
 
 const downloads = [
-  { label: "NisanApp Cloud", href: "/downloads/apps/nisanapp-cloud-release.apk" },
-  { label: "NisanApp Local", href: "/downloads/apps/nisanapp-local-release.apk" },
-  { label: "LunaCycle", href: "/downloads/apps/lunacycle-release.apk" },
-  { label: "DiamondCity", href: "/downloads/apps/diamondcity-release.apk" },
+  { label: "NisanApp cloud APK", href: "/downloads/apps/nisanapp-cloud-release.apk" },
+  { label: "NisanApp local APK", href: "/downloads/apps/nisanapp-local-release.apk" },
+  { label: "LunaCycle demo APK", href: "/downloads/apps/lunacycle-release.apk" },
+  { label: "DiamondCity demo APK", href: "/downloads/apps/diamondcity-release.apk" },
 ];
 
 export function Contact() {
   return (
-    <section id="contact" className="py-28 relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-24 relative overflow-hidden">
       <div className="section-shell">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ export function Contact() {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
               <div>
                 <h3 className="text-2xl font-black">Download featured apps</h3>
-                <p className="text-muted-foreground mt-1">Release APKs included for the top portfolio apps.</p>
+                <p className="text-muted-foreground mt-1">Android APK demo builds. Install manually on Android devices.</p>
               </div>
               <Download className="w-7 h-7 text-primary" />
             </div>

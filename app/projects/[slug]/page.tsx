@@ -48,16 +48,21 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
         <header className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 items-start mb-12">
           <div>
-            <div className="flex flex-wrap gap-2 mb-5">
-              <span className="px-3 py-1 rounded-full bg-primary/15 text-primary text-xs font-bold uppercase tracking-wider">
-                {project.category}
-              </span>
-              <span className="px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-bold uppercase tracking-wider">
-                {project.status}
-              </span>
-              <span className="px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-bold uppercase tracking-wider">
-                {project.year}
-              </span>
+            <div className="flex items-start gap-4 mb-5">
+              {project.icon && (
+                <Image src={project.icon} alt={`${project.title} app icon`} width={72} height={72} className="rounded-2xl border border-border object-cover" />
+              )}
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 rounded-full bg-primary/15 text-primary text-xs font-bold uppercase tracking-wider">
+                  {project.category}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-bold uppercase tracking-wider">
+                  {project.status}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-bold uppercase tracking-wider">
+                  {project.year}
+                </span>
+              </div>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-none mb-5 md:mb-6">{project.title}</h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-5 md:mb-6">{project.subtitle}</p>
@@ -75,6 +80,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                     {download.label}
                   </a>
                 ))}
+                <p className="basis-full text-sm text-muted-foreground leading-relaxed">
+                  Android APK demo builds are provided for manual installation on Android devices. Use the notes below to choose the right build.
+                </p>
               </div>
             )}
           </div>
@@ -89,20 +97,56 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               ))}
             </div>
             {project.downloads?.map((download) => (
-              <p key={download.href} className="text-sm text-muted-foreground leading-relaxed">
-                {download.note}
-              </p>
+              <div key={download.href} className="rounded-xl border border-border bg-background/60 p-4 mb-3 last:mb-0">
+                <p className="font-bold mb-1">{download.label}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{download.note}</p>
+              </div>
             ))}
           </div>
         </header>
 
-        {project.images.length > 0 && (
-          <section className="glass-panel rounded-[1.5rem] p-6 mb-10">
-            <h2 className="text-2xl font-black mb-6">Screenshots</h2>
+        <section className="glass-panel rounded-[1.5rem] p-6 mb-10">
+          <h2 className="text-2xl font-black mb-6">{project.images.length > 0 ? "Screenshots" : "Visual proof"}</h2>
+          {project.images.length > 0 ? (
             <div className="flex gap-4 overflow-x-auto pb-3">
               {project.images.map((image, index) => (
-                <div key={image} className="relative shrink-0 w-[74vw] sm:w-[230px] md:w-[280px] aspect-[9/18.5] rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border border-border bg-background">
-                  <Image src={image} alt={`${project.title} screenshot ${index + 1}`} fill className="object-cover" />
+                <div key={image} className="shrink-0 w-[74vw] sm:w-[230px] md:w-[280px]">
+                  <div className="relative aspect-[9/18.5] rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border border-border bg-background">
+                    <Image src={image} alt={`${project.title} screenshot ${index + 1}`} fill className="object-cover" />
+                  </div>
+                  {project.imageCaptions?.[index] && (
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-3">{project.imageCaptions[index]}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-border bg-background/70 p-6 md:p-8 flex flex-col md:flex-row gap-5 md:items-center">
+              {project.icon ? (
+                <Image src={project.icon} alt={`${project.title} app icon`} width={96} height={96} className="rounded-3xl border border-border object-cover" />
+              ) : (
+                <div className="w-24 h-24 rounded-3xl bg-primary/15 text-primary grid place-items-center text-3xl font-black">
+                  {project.title.slice(0, 2)}
+                </div>
+              )}
+              <div>
+                <p className="text-xl font-black mb-2">{project.title}</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  This project is presented through its visual identity, stack, highlights and case-study notes, with the strongest screen-level walkthroughs reserved for the featured mobile apps.
+                </p>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {project.caseStudy && (
+          <section className="glass-panel rounded-[1.5rem] p-6 md:p-8 mb-10">
+            <h2 className="text-2xl font-black mb-6">Case study</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+              {Object.entries(project.caseStudy).map(([label, value]) => (
+                <div key={label} className="rounded-xl border border-border bg-background/60 p-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-primary font-bold mb-3">{label}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{value}</p>
                 </div>
               ))}
             </div>

@@ -2,11 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Award, Megaphone, Users } from "lucide-react";
+import { Award, BrainCircuit, Megaphone, Users } from "lucide-react";
 import Image from "next/image";
 import { achievements, certificates } from "@/lib/portfolio-data";
 
 const spotlights = [
+  {
+    title: "Pfizer / Extern AI Document Intelligence",
+    description:
+      "Selected for an externship focused on Python pipelines, OCR, PDF extraction, AI model testing and RAG-based document search.",
+    icon: BrainCircuit,
+  },
   {
     title: "CeresVera Product / Business Lead",
     description:
@@ -29,14 +35,14 @@ const spotlights = [
 
 export function Achievements() {
   return (
-    <section id="achievements" className="py-28 relative">
+    <section id="achievements" className="py-20 md:py-24 relative">
       <div className="section-shell">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-          className="mb-14"
+          className="mb-10 md:mb-12"
         >
           <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">Achievements</p>
           <h2 className="text-4xl md:text-6xl font-black leading-tight max-w-4xl">
@@ -44,7 +50,7 @@ export function Achievements() {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-5 mb-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
           {spotlights.map((item, index) => (
             <motion.article
               key={item.title}

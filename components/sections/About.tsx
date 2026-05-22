@@ -11,7 +11,7 @@ const focusAreas = [
 
 export function About() {
   return (
-    <section id="about" className="py-28 relative overflow-hidden">
+    <section id="about" className="py-20 md:py-24 relative overflow-hidden">
       <div className="section-shell">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
           <motion.div
