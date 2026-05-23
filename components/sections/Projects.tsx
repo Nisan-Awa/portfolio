@@ -107,7 +107,7 @@ export function Projects() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-7 md:mt-8">
+                  <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-7 md:mt-8 min-w-0">
                     <Link
                       href={`/projects/${project.slug}`}
                       className="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-bold hover:opacity-90"
@@ -126,8 +126,8 @@ export function Projects() {
                       </a>
                     ))}
                     {project.downloads?.slice(0, 1).map((download) => (
-                      <p key={`${download.href}-note`} className="basis-full text-xs text-muted-foreground leading-relaxed">
-                        {download.note ?? "Android APK demo build. Install manually on Android devices."}
+                      <p key={`${download.href}-note`} className="w-full max-w-full min-w-0 text-xs text-muted-foreground leading-relaxed break-words">
+                        Android demo APK. Manual install on Android devices.
                       </p>
                     ))}
                   </div>

@@ -87,12 +87,15 @@ export function Achievements() {
             <div className="grid sm:grid-cols-2 gap-4">
               {certificates.map((certificate) => (
                 <article key={certificate.image} className="rounded-xl border border-border overflow-hidden bg-background">
-                  <div className="relative aspect-[4/3] bg-secondary">
+                  <a href={certificate.image} target="_blank" rel="noopener noreferrer" className="relative block aspect-[4/3] bg-secondary cursor-zoom-in">
                     <Image src={certificate.image} alt={certificate.title} fill className="object-contain p-2" />
-                  </div>
+                  </a>
                   <div className="p-4">
                     <h4 className="font-black">{certificate.title}</h4>
                     <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{certificate.description}</p>
+                    <a href={certificate.image} target="_blank" rel="noopener noreferrer" className="inline-flex mt-3 text-sm font-bold text-primary">
+                      View certificate
+                    </a>
                   </div>
                 </article>
               ))}
