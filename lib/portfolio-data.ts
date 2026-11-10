@@ -6,8 +6,10 @@ export type Project = {
   year: string;
   status: string;
   featured?: boolean;
-  group: "Flagship Apps" | "Engineering, AI and Product" | "UI Concepts and Practice Builds";
+  group: "Client Websites" | "Flagship Apps" | "Engineering, AI and Product" | "UI Concepts and Practice Builds";
   icon?: string;
+  website?: string;
+  collaborator?: { name: string; href: string };
   stack: string[];
   summary: string;
   details: string[];
@@ -26,13 +28,15 @@ export type Project = {
 };
 
 export const featuredStats = [
-  { value: "4K+", label: "LinkedIn community" },
+  { value: "9K+", label: "LinkedIn community" },
   { value: "3rd", label: "Interswitch Pan-African Discovery Series" },
   { value: "330/132 kV", label: "Power transmission exposure" },
   { value: "10+", label: "Flutter projects and app concepts" },
 ];
 
 export const projects: Project[] = [
+{"slug": "queenbrique", "title": "Queenbrique", "subtitle": "Bridal & bespoke fashion atelier", "category": "Client Website", "year": "July–August 2026", "status": "Live website", "group": "Client Websites", "icon": "/assets/websites/queenbrique-logo.webp", "website": "https://www.queenbrique.com/", "collaborator": {"name": "Nasir Dauda", "href": "https://raregazzetto.me/"}, "stack": ["Web Development", "Brand Presentation", "Collaboration"], "summary": "A website for Queenbrique, an Abuja bridal and bespoke fashion atelier. Built with Nasir Dauda to present the brand’s collections and help visitors take the next step towards a consultation.", "details": ["I co-developed Queenbrique’s website with Nasir Dauda between July and August 2026.", "The live website presents bridal and occasion wear, traditional designs and suiting, alongside a gallery, the fitting process and WhatsApp consultation links."], "highlights": ["Bridal and bespoke fashion collections.", "A visual gallery and explanation of the fitting process.", "Consultation links for prospective clients.", "Co-developed with Nasir Dauda."], "images": ["/assets/websites/queenbrique.webp"], "imageLayout": "wide", "imageCaptions": ["The live Queenbrique homepage, captured for this portfolio."], "caseStudy": {"problem": "A fashion atelier needs a clear way for visitors to discover its work and enquire about a fitting.", "built": "I co-developed a website for Queenbrique with Nasir Dauda, bringing the brand’s work and consultation routes into one place.", "challenge": "The presentation needed to give the imagery room while keeping the path to an enquiry clear.", "learned": "The collaboration strengthened my experience building for a client’s identity and working alongside another developer.", "impact": "The finished website gives Queenbrique a dedicated online home for its collections and enquiries."}},
+{"slug": "elegant-radiance-luxe", "title": "Elegant Radiance Luxe", "subtitle": "Fashion & beauty storefront", "category": "Client Website", "year": "August–October 2026", "status": "Live website", "group": "Client Websites", "icon": "/assets/websites/elegant-radiance-luxe-logo.webp", "website": "https://elegantradianceluxe.com/", "collaborator": {"name": "Nasir Dauda", "href": "https://raregazzetto.me/"}, "stack": ["Web Development", "Online Storefront", "Collaboration"], "summary": "A fashion and beauty website co-developed with Nasir Dauda. The storefront brings product categories, a catalogue, a cart and WhatsApp support into a cohesive brand experience.", "details": ["I co-developed the Elegant Radiance Luxe website with Nasir Dauda from August to October 2026.", "The live storefront covers clothing, footwear, bags, hair and cosmetics, with category navigation, product listings, a shopping cart and WhatsApp support."], "highlights": ["Fashion and beauty product categories.", "Browsable product catalogue and shopping cart.", "WhatsApp support for customer enquiries.", "Co-developed with Nasir Dauda."], "images": ["/assets/websites/elegant-radiance-luxe.webp"], "imageLayout": "wide", "imageCaptions": ["The live Elegant Radiance Luxe homepage, captured for this portfolio."], "caseStudy": {"problem": "A fashion and beauty business needs a consistent way to present different product categories and guide shoppers.", "built": "I co-developed the Elegant Radiance Luxe website with Nasir Dauda over August–October 2026.", "challenge": "The site needed to combine a luxury visual identity with understandable catalogue navigation and customer support.", "learned": "The project extended my experience with client websites and collaborative delivery over a longer engagement.", "impact": "The live website provides a single storefront for the brand’s fashion and beauty range."}},
   {
     slug: "nisanapp",
     title: "NisanApp",
@@ -408,7 +412,13 @@ export const projects: Project[] = [
   },
 ];
 
-export const experiences = [
+export type Experience = { role: string; company: string; period: string; description: string; href?: string };
+
+export const experiences: Experience[] = [
+{"role": "ICT Facilitator · Part-time", "company": "Karryfield International School", "href": "https://www.kis.com.ng/", "period": "September 2026–present", "description": "Teach children Python and provide practical ICT assistance to the school. Support learning through clear explanations and help with day-to-day technology needs."},
+{"role": "Website Co-developer", "company": "Elegant Radiance Luxe · with Nasir Dauda", "href": "https://elegantradianceluxe.com/", "period": "August–October 2026", "description": "Co-developed a fashion and beauty storefront with Nasir Dauda, bringing together product categories, a catalogue, a cart and customer support links."},
+{"role": "Website Co-developer", "company": "Queenbrique · with Nasir Dauda", "href": "https://www.queenbrique.com/", "period": "July–August 2026", "description": "Co-developed the website for an Abuja bridal and bespoke fashion atelier with Nasir Dauda, presenting collections, the fitting process and consultation routes."},
+{"role": "Python & Web Development Tutor", "company": "Independent tutoring · Two young learners", "period": "2026 · Two-month programme", "description": "Tutored two children in Python and supported them in building their own websites. Henry Ndubisi and Lotanna Obigwe’s portfolios are featured in the mentorship section."},
   {
     role: "Pfizer Advanced AI Document Intelligence Extern",
     company: "Extern / Pfizer",
@@ -454,12 +464,15 @@ export const experiences = [
 ];
 
 export const achievements = [
+  "Graduated with a B.Eng. in Electrical & Electronics Engineering, Second Class (Hons.) Upper Division, from Afe Babalola University in 2026.",
+  "Co-developed the live Queenbrique and Elegant Radiance Luxe websites with Nasir Dauda.",
+  "Began a part-time ICT Facilitator role at Karryfield International School in September 2026.",
   "Selected for the Pfizer Advanced: AI-Powered Document Insights & Data Extraction Externship with Extern.",
   "3rd Place - Interswitch Pan-African Discovery Series with Team CeresVera.",
   "Campus to Career 2.0 cash-prize recognition after pitching CeresVera at ABUAD.",
   "Selected for a competitive NUC internship opportunity around national university database management.",
   "Completed Featuremind SIWES and built multiple Flutter/Firebase projects.",
-  "Grew a LinkedIn community past 4,000 followers by documenting engineering, software, AI, events and growth.",
+  "Grew a LinkedIn community past 9,000 followers by documenting engineering, software, AI, events and growth.",
   "Facilitated an ASVA Software Portfolio Workshop and taught Python to younger learners.",
 ];
 
@@ -491,6 +504,7 @@ export const skillGroups = [
 ];
 
 export const certificates = [
+  { title: "B.Eng. Electrical & Electronics Engineering", image: "/assets/certificates/engineering-degree.webp", description: "Afe Babalola University. Second Class (Hons.) Upper Division. Degree certificate dated 29 July 2026; graduation date 21 October 2026." },
   {
     title: "Featuremind Flutter Development Internship",
     image: "/assets/certificates/featuremind.jpg",

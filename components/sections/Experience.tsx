@@ -38,7 +38,7 @@ export function Experience() {
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
                     <div>
                       <h3 className="text-2xl font-black">{experience.role}</h3>
-                      <p className="text-primary font-bold">{experience.company}</p>
+                      <p className="text-primary font-bold">{experience.href ? <a className="hover:underline underline-offset-4" href={experience.href} target="_blank" rel="noopener noreferrer">{experience.company} ↗</a> : experience.company}</p>
                     </div>
                     <span className="w-fit px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-bold uppercase tracking-wider">
                       {experience.period}

@@ -26,7 +26,7 @@ const spotlights = [
     icon: Megaphone,
   },
   {
-    title: "LinkedIn 4K+ Community",
+    title: "LinkedIn 9K+ Community",
     description:
       "Built a professional audience by documenting software, engineering, AI, events, learning and personal growth.",
     icon: Users,
@@ -88,7 +88,7 @@ export function Achievements() {
               {certificates.map((certificate) => (
                 <article key={certificate.image} className="rounded-xl border border-border overflow-hidden bg-background">
                   <a href={certificate.image} target="_blank" rel="noopener noreferrer" className="relative block aspect-[4/3] bg-secondary cursor-zoom-in">
-                    <Image src={certificate.image} alt={certificate.title} fill className="object-contain p-2" />
+                    <Image src={certificate.image} alt={certificate.title} fill sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 300px" className="object-contain p-2" />
                   </a>
                   <div className="p-4">
                     <h4 className="font-black">{certificate.title}</h4>

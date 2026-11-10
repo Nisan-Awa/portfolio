@@ -2,9 +2,10 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Bot, BrainCircuit, GraduationCap, Network, Smartphone, Zap } from "lucide-react";
+import { Bot, BrainCircuit, GraduationCap, Globe, Network, Smartphone, Zap } from "lucide-react";
 
 const services = [
+  { title: "Websites for Brands", description: "Websites that give businesses a clear home online, with considered presentation, useful navigation and room to grow. Recent collaborations include Queenbrique and Elegant Radiance Luxe.", icon: Globe },
   {
     title: "Mobile App Development",
     description:
@@ -68,7 +69,7 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1], delay: index * 0.04 }}
-              className="glass-panel rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300"
+              className={"glass-panel rounded-2xl p-6 hover:-translate-y-1 transition-transform duration-300 " + (index === 0 ? "sm:col-span-2 lg:col-span-3" : "")}
             >
               <div className="w-12 h-12 rounded-xl bg-primary/15 text-primary grid place-items-center mb-5">
                 <service.icon className="w-6 h-6" />

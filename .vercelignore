@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.git/
+.vercel/
+.idea/
+client/
+server/
+.deployment-check/
+.env*
+**/.env*
+*.pem
+*.tsbuildinfo
+npm-debug.log*
+.DS_Store

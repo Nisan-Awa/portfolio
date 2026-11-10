@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Download, Github, Linkedin, Mail, Phone } from "lucide-react";
 
@@ -29,12 +30,12 @@ export function Contact() {
           transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           className="glass-panel rounded-[1.5rem] md:rounded-[2rem] p-5 sm:p-8 md:p-12 text-center"
         >
-          <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-5">Contact</p>
+          <div className="contact-person"><div className="relative w-24 h-24 rounded-full overflow-hidden border border-border"><Image src="/assets/portraits/suit-1.webp" alt="Awa Nisan Tojah" fill sizes="96px" className="object-cover object-[center_20%]" /></div><div className="text-left"><p className="eyebrow mb-2">Work with me</p><p className="font-bold">Awa Nisan Tojah</p><p className="text-sm text-muted-foreground">Software Engineer · Educator</p></div></div>
           <h2 className="text-3xl sm:text-4xl md:text-7xl font-black mb-6 md:mb-8 leading-tight">
-            Open to mobile development, software internships and engineering technology roles.
+            Let’s build something useful.
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8 md:mb-10">
-            I am focused on Flutter engineering, Firebase-backed systems, AI-enabled engineering solutions, robotics integration and products that connect hardware, software and human needs.
+            I welcome client projects, software and engineering roles, and opportunities to teach or collaborate. If your team needs someone who can connect technical detail with everyday needs, I would like to hear what you are working on.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">

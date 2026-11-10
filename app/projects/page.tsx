@@ -6,18 +6,19 @@ import { projects } from "@/lib/portfolio-data";
 
 export const metadata = {
   title: "Projects | Nisan Awa",
-  description: "Flutter, engineering, AI, robotics and product projects by Nisan Awa.",
+  description: "Client websites, Flutter apps, engineering, AI, robotics and product projects by Nisan Awa.",
 };
 
 export default function ProjectsPage() {
   const groups = [
+    "Client Websites",
     "Flagship Apps",
     "Engineering, AI and Product",
     "UI Concepts and Practice Builds",
   ] as const;
 
   return (
-    <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 pb-16 md:pb-20">
+    <main id="main-content" className="min-h-screen bg-background text-foreground pt-28 md:pt-32 pb-16 md:pb-20">
       <Header />
       <section className="section-shell">
         <div className="mb-12">
@@ -26,7 +27,7 @@ export default function ProjectsPage() {
           </Link>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mt-5 mb-5 md:mb-6">Projects</h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-            A broader index of my mobile apps, engineering projects, AI experiments, robotics work and product leadership experiences.
+            Client websites, mobile apps, engineering projects, AI experiments, robotics work and product leadership experiences.
           </p>
         </div>
 
@@ -57,7 +58,9 @@ export default function ProjectsPage() {
                         <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-border bg-secondary mb-5">
                           <Image
                             src={project.images[0]}
+                            unoptimized={project.group === "Client Websites"}
                             alt={`${project.title} preview`}
+                            sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 360px"
                             fill
                             className={project.imageLayout === "wide" ? "object-contain p-2" : "object-cover object-top"}
                           />
@@ -74,6 +77,7 @@ export default function ProjectsPage() {
                         ))}
                       </div>
                       <div className="mt-auto flex flex-wrap gap-3">
+                        {project.website && <a href={project.website} target="_blank" rel="noopener noreferrer" className="action-link secondary-action"><Image src={project.icon!} alt="" width={24} height={24} className="brand-logo" />Visit website<ArrowUpRight size={16} /></a>}
                         <Link
                           href={`/projects/${project.slug}`}
                           className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm"

@@ -142,7 +142,7 @@ export function Projects() {
                           className="relative shrink-0 w-[72vw] sm:w-[210px] md:w-[250px] aspect-[9/18.5] rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border border-border bg-background shadow-2xl"
                           style={{ transform: `translateY(${imageIndex % 2 === 0 ? 0 : 28}px)` }}
                         >
-                          <Image src={image} alt={`${project.title} screenshot ${imageIndex + 1}`} fill className="object-cover" />
+                          <Image src={image} alt={`${project.title} screenshot ${imageIndex + 1}`} fill sizes="(max-width: 640px) 72vw, 250px" className="object-cover" />
                         </div>
                       ))}
                     </div>

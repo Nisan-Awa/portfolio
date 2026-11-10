@@ -40,7 +40,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const isWideVisual = project.imageLayout === "wide";
 
   return (
-    <main className="min-h-screen bg-background text-foreground pt-28 md:pt-32 pb-16 md:pb-20">
+    <main id="main-content" className="min-h-screen bg-background text-foreground pt-28 md:pt-32 pb-16 md:pb-20">
       <Header />
       <article className="section-shell">
         <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-bold text-primary mb-8">
@@ -70,6 +70,8 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <p className="text-xl md:text-2xl text-muted-foreground mb-5 md:mb-6">{project.subtitle}</p>
             <p className="text-lg text-muted-foreground leading-relaxed">{project.summary}</p>
 
+            {project.website && <div className="mt-7"><a className="action-link" href={project.website} target="_blank" rel="noopener noreferrer"><Image src={project.icon!} alt="" width={26} height={26} className="brand-logo" />Visit {project.title} <span aria-hidden="true">↗</span></a></div>}
+            {project.collaborator && <p className="body-copy mt-5">Co-developed with <a className="text-link" href={project.collaborator.href} target="_blank" rel="noopener noreferrer">{project.collaborator.name} ↗</a></p>}
             {project.downloads && (
               <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-8">
                 {project.downloads.map((download) => (
@@ -90,7 +92,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </div>
 
           <div className="glass-panel rounded-[1.5rem] p-6">
-            <h2 className="text-2xl font-black mb-5">Project stack</h2>
+            <h2 className="text-2xl font-black mb-5">{project.website ? "Project focus" : "Project stack"}</h2>
             <div className="flex flex-wrap gap-2 mb-6">
               {project.stack.map((item) => (
                 <span key={item} className="px-3 py-2 rounded-full bg-secondary text-muted-foreground text-sm">
@@ -122,7 +124,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   >
                     <Image
                       src={image}
+                      unoptimized={Boolean(project.website)}
                       alt={`${project.title} visual ${index + 1}`}
+                      sizes={isWideVisual ? "(max-width: 768px) 90vw, 550px" : "(max-width: 640px) 74vw, 280px"}
                       fill
                       className={isWideVisual ? "object-contain p-2" : "object-cover"}
                     />
@@ -165,6 +169,8 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </div>
           </section>
         )}
+
+        {project.collaborator && <section className="collaborator-strip mb-10"><a className="relative block aspect-[16/10] overflow-hidden rounded-xl border border-border" href={project.collaborator.href} target="_blank" rel="noopener noreferrer"><Image src="/assets/websites/nasir-dauda.webp" unoptimized alt="Nasir Dauda portfolio" fill sizes="300px" className="object-cover object-top" /></a><div><p className="eyebrow">Collaborator</p><h2 className="text-2xl font-black mb-3">Nasir Dauda</h2><p className="body-copy">A full-stack software developer and Electrical &amp; Electronics Engineer working across backend systems, responsive websites, mobile apps and AI integrations.</p><a className="text-link inline-block mt-4" href={project.collaborator.href} target="_blank" rel="noopener noreferrer">Explore Nasir’s portfolio ↗</a></div></section>}
 
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8">
           <section className="glass-panel rounded-[1.5rem] p-6 md:p-8">

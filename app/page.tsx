@@ -1,4 +1,7 @@
 import React from "react";
+import { ClientWork } from "@/components/sections/ClientWork";
+import { Education } from "@/components/sections/Education";
+import { Mentoring } from "@/components/sections/Mentoring";
 import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -11,13 +14,16 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function Portfolio() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+    <main id="main-content" className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       <Header />
       <Hero />
       <About />
+      <Education />
       <Services />
+      <ClientWork />
       <Projects />
       <Experience />
+      <Mentoring />
       <Achievements />
       <Skills />
       <Contact />
