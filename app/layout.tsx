@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="dark scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="antialiased bg-background text-foreground">
         <a href="#main-content" className="skip-link">Skip to content</a>
         <MotionProvider><Background />{children}</MotionProvider>

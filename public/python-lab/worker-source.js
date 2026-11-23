@@ -1,0 +1,143 @@
+/* Serialized into a fresh module worker for every run. No execution server or API. */
+self.pythonWorkerMain = async function () {
+  self.onmessage = async event => {
+    const job = event.data;
+    let initialized = false;
+    try {
+      const { loadPyodide } = await import("https://cdn.jsdelivr.net/pyodide/v314.0.8/full/pyodide.mjs");
+      const pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v314.0.8/full/", stdout: () => {}, stderr: () => {} });
+      initialized = true;
+      self.postMessage({ kind: "ready" });
+      pyodide.FS.mkdir("/work");
+      pyodide.FS.chdir("/work");
+      pyodide.globals.set("_lab_job_json", JSON.stringify(job));
+      const serialized = await pyodide.runPythonAsync(`
+import ast as _ast
+import builtins as _builtins
+import contextlib as _contextlib
+import io as _io
+import json as _json
+import os as _os
+import sys as _sys
+import tokenize as _tokenize
+import traceback as _traceback
+
+_job = _json.loads(_lab_job_json)
+_MAX_OUTPUT = 12000
+
+class _OutputLimit(Exception):
+    pass
+
+class _Capture(_io.StringIO):
+    def write(self, value):
+        available = _MAX_OUTPUT - self.tell()
+        if len(value) > available:
+            super().write(value[:max(0, available)])
+            raise _OutputLimit("Output reached 12,000 characters. Try fewer repetitions or print a summary.")
+        return super().write(value)
+
+def _error(error):
+    frames = _traceback.extract_tb(error.__traceback__)
+    line = error.lineno if isinstance(error, SyntaxError) else next((f.lineno for f in reversed(frames) if f.filename == "your_code.py"), None)
+    return {"name": "OutputLimit" if isinstance(error, _OutputLimit) else type(error).__name__, "message": str(error)[:1600], "line": line, "detail": "".join(_traceback.format_exception(type(error), error, error.__traceback__))[-5000:]}
+
+def _execute(source, input_text):
+    output = _Capture()
+    consumed = []
+    input_stream = _io.TextIOWrapper(_io.BytesIO(input_text.encode("utf-8")), encoding="utf-8", newline=None)
+    def read_input(prompt=""):
+        line = input_stream.readline()
+        if line == "":
+            raise EOFError("Add another response line to Program input, then run again. An empty input box contains no responses; a blank line can be supplied by pressing Enter in it.")
+        response = line.removesuffix("\\n").removesuffix("\\r")
+        consumed.append({"prompt": str(prompt)[:300], "response": response[:1000]})
+        return response
+    namespace = {"__name__": "__main__", "__builtins__": dict(vars(_builtins), input=read_input)}
+    result = {"stdout": "", "inputs": consumed}
+    previous_stdin = _sys.stdin
+    _sys.stdin = input_stream
+    try:
+        tree = _ast.parse(source, filename="your_code.py")
+        with _contextlib.redirect_stdout(output), _contextlib.redirect_stderr(output):
+            exec(compile(tree, "your_code.py", "exec"), namespace)
+        result["stdout"] = output.getvalue()
+        return result, namespace, tree
+    except BaseException as error:
+        result["stdout"] = output.getvalue()
+        result["error"] = _error(error)
+        return result, namespace, None
+    finally:
+        _sys.stdin = previous_stdin
+
+def _matches(source, tree, construct):
+    if construct == "comment":
+        return any(token.type == _tokenize.COMMENT for token in _tokenize.generate_tokens(_io.StringIO(source).readline))
+    if construct.startswith("call:"):
+        name = construct.split(":", 1)[1]
+        return any(isinstance(node, _ast.Call) and isinstance(node.func, _ast.Name) and node.func.id == name for node in _ast.walk(tree))
+    kind = getattr(_ast, construct, None)
+    return kind is not None and any(isinstance(node, kind) for node in _ast.walk(tree))
+
+def _run():
+    source = _job.get("code", "")[:30000]
+    for item in _job.get("files", [])[:5]:
+        name = item.get("name", "")
+        text = item.get("text", "")
+        if isinstance(name, str) and name == _os.path.basename(name) and name not in ("", ".", "..") and isinstance(text, str) and len(text.encode("utf-8")) <= 100000 and name.lower().endswith((".txt", ".csv", ".json", ".py")):
+            with open(name, "w", encoding="utf-8") as file:
+                file.write(text)
+    if _job.get("operation") == "check":
+        checks = _job.get("checks", [])[:5]
+        if not checks:
+            return {"stdout": "", "inputs": [], "passed": False, "feedback": "This activity has no checks."}
+        result = {"stdout": "", "inputs": []}
+        for index, check in enumerate(checks):
+            result, namespace, tree = _execute(source, check.get("input", ""))
+            result["cases"] = index + 1
+            if "error" in result:
+                result.update(passed=False, feedback=f"Check {index + 1} stopped with an error. Your draft is safe; use the message below to find the next step.")
+                return result
+            missing = [name for name in _job.get("constructs", []) if not _matches(source, tree, name)]
+            if missing:
+                labels = {"Assign": "a variable assignment", "BinOp": "a calculation", "Compare": "a comparison", "BoolOp": "and/or", "JoinedStr": "an f-string", "For": "a for loop", "While": "a while loop", "If": "an if condition", "FunctionDef": "a function", "Return": "a return statement", "List": "a list", "Dict": "a dictionary", "ClassDef": "a class", "Assert": "an assert check", "Try": "try/except", "With": "a with block", "Import": "an import", "Attribute": "a method or attribute", "Subscript": "indexing or slicing", "comment": "a # comment"}
+                names = [labels.get(name, name.replace("call:", "a call to ") + ("()" if name.startswith("call:") else "")) for name in missing]
+                result.update(passed=False, feedback="The output ran. To practise this lesson's idea, also use " + ", ".join(names) + ".")
+                return result
+            actual = result["stdout"].replace("\\r\\n", "\\n").rstrip()
+            expected = check.get("output", "").replace("\\r\\n", "\\n").rstrip()
+            if actual != expected:
+                result.update(passed=False, feedback=f"Check {index + 1}: compare your result with the task. Expected:\\n{expected}\\n\\nYour output:\\n{actual or '(no output)'}")
+                return result
+            if check.get("assertions"):
+                environment = dict(namespace, ast=_ast, tree=tree)
+                try:
+                    with _contextlib.redirect_stdout(_Capture()), _contextlib.redirect_stderr(_Capture()):
+                        exec(check["assertions"], environment)
+                except BaseException as error:
+                    result.update(passed=False, feedback="The displayed output matches. Check the program's values and behaviour too. " + (str(error) or "Follow the variable, function and data requirements in the task."))
+                    return result
+        result.update(passed=True, feedback=f"All {len(checks)} {'checks' if len(checks) != 1 else 'check'} passed. You used the idea and got the expected results.")
+        return result
+    result, _, _ = _execute(source, _job.get("input", ""))
+    files = []
+    for name in sorted(_os.listdir("/work"))[:30]:
+        path = _os.path.join("/work", name)
+        if name.lower().endswith((".txt", ".csv", ".json", ".py")) and _os.path.isfile(path) and _os.path.getsize(path) <= 100000:
+            try:
+                with open(path, encoding="utf-8") as file:
+                    files.append({"name": name, "text": file.read()})
+            except (OSError, UnicodeError):
+                pass
+        if len(files) == 5:
+            break
+    result["files"] = files
+    return result
+
+_json.dumps(_run())
+`);
+      self.postMessage({ kind: "result", result: JSON.parse(serialized) });
+    } catch (error) {
+      self.postMessage({ kind: "result", result: { stdout: "", inputs: [], error: { name: initialized ? "RuntimeError" : "LoadError", message: initialized ? "The Python session could not finish. Try Run again with a smaller program." : "Python could not download. Check your internet connection and access to cdn.jsdelivr.net, then try Run again.", detail: String(error).slice(0, 5000) } } });
+    }
+  };
+};

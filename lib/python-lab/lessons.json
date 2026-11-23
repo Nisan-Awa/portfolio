@@ -1,0 +1,402 @@
+[
+  {
+    "id":"hello-python","module":1,"title":"Say hello","goal":"Run your first Python instruction and change its message.",
+    "explain":["A program is a set of instructions. Python follows them when you press Run.","print() displays a value. Put text inside matching straight quotes and keep the round brackets closed. The quotes are part of the code, not the displayed message."],
+    "young":"Tell the computer something to say. Change the words between the quotes, then press Run.","everyday":"The same print() instruction helps programmers inspect results in small scripts and large applications.",
+    "example":"print(\"Hello, Python!\")\n","exampleOutput":"Hello, Python!",
+    "challenge":"Change the message so the program displays I can learn Python! exactly once.",
+    "prediction":{"question":"What does the example display?","options":["Hello, Python!","print","\"Hello, Python!\""],"right":0,"why":"print() displays the text between the quotes. It does not display the quotes themselves."},
+    "hints":["Keep print( and the closing bracket.","Replace only the text inside the quotes with I can learn Python!"],
+    "solution":"print(\"I can learn Python!\")\n","constructs":["Call"],"checks":[{"output":"I can learn Python!"}]
+  },
+  {
+    "id":"in-order","module":1,"title":"One line, then the next","goal":"Understand the order in which instructions run.",
+    "explain":["Python normally follows instructions from top to bottom. Each print() starts a new output line.","An algorithm is a clear sequence of steps. A program expresses steps in a language the computer can run."],
+    "young":"Imagine giving three instructions to a helper. First, next and last matter.","everyday":"Order matters in a recipe, a payment calculation and a program that reads a file before using its contents.",
+    "example":"print(\"First\")\nprint(\"Next\")\nprint(\"Last\")\n","exampleOutput":"First\nNext\nLast",
+    "challenge":"Use three print() instructions to display Ready, Set and Code, in that order, each on a separate line.",
+    "prediction":{"question":"Which word appears first in the example?","options":["Last","Next","First"],"right":2,"why":"The first line runs first. Python reaches the other instructions afterwards."},
+    "hints":["Put one print() instruction on each line.","The first instruction should be print(\"Ready\")."],
+    "solution":"print(\"Ready\")\nprint(\"Set\")\nprint(\"Code\")\n","checks":[{"output":"Ready\nSet\nCode"}]
+  },
+  {
+    "id":"helpful-comments","module":1,"title":"Leave a helpful note","goal":"Use a comment to explain an instruction.",
+    "explain":["A comment begins with # outside a string. Python ignores the comment when it runs the program.","Use a short comment to explain why a step is useful. A # inside quoted text is simply part of that text."],
+    "young":"A comment is a note for the person reading the code. The computer does not say it.","everyday":"A clear note can help your future self understand a calculation when you return to a program.",
+    "example":"# Greet the reader\nprint(\"Welcome!\")\n","exampleOutput":"Welcome!",
+    "challenge":"Keep a helpful comment and change the printed message to Small steps count. The comment should not appear in the output.",
+    "prediction":{"question":"Does the example display Greet the reader?","options":["Yes, before Welcome!","No, it is a comment","Only if we run twice"],"right":1,"why":"The # starts a comment outside a string, so only Welcome! is displayed."},
+    "hints":["Leave the line beginning with # in place.","Change the string passed to print()."],
+    "solution":"# Encourage the learner\nprint(\"Small steps count.\")\n","constructs":["comment"],"checks":[{"output":"Small steps count."}]
+  },
+  {
+    "id":"first-bug","module":1,"title":"Fix a tiny bug","goal":"Read an error and correct a missing quote.",
+    "explain":["A syntax error means Python cannot understand the way an instruction is written. Quotes and brackets must match.","Debugging means finding and correcting a mistake. Read the error, look near the named line, change one thing and run again. Mistakes are part of learning."],
+    "young":"Look for pairs: an opening quote needs a closing quote. You can fix this.","everyday":"Careful debugging is more useful than changing many unrelated lines at once.",
+    "example":"print(\"I fixed it!\")\n","exampleOutput":"I fixed it!","starter":"print(\"I fixed it!)\n",
+    "challenge":"The editor has a missing quotation mark. Fix it so it displays I fixed it! without an error.",
+    "prediction":{"question":"What does the corrected example display?","options":["An empty line","I fixed it!","SyntaxError"],"right":1,"why":"Matching quotes and parentheses make this a valid print() instruction."},
+    "hints":["Find the text that starts with a quotation mark.","Add a closing quote after the exclamation mark and before the final bracket."],
+    "solution":"print(\"I fixed it!\")\n","checks":[{"output":"I fixed it!"}]
+  },
+  {
+    "id":"named-values","module":2,"title":"Give a value a name","goal":"Store a value in a variable and use it.",
+    "explain":["A variable is a name that refers to a value. In score = 10, the equals sign assigns 10 to the name score.","print(score) displays the value. print(\"score\") displays the literal word. Variable names are case sensitive; use names that explain their purpose."],
+    "young":"Think of a label on a box. The label is score; the value inside can change.","everyday":"Names such as total_price or remaining_minutes make calculations easier to follow.",
+    "example":"score = 10\nprint(score)\n","exampleOutput":"10",
+    "challenge":"Assign 25 to a variable named score, then print its value. Use the variable in print().",
+    "prediction":{"question":"What does print(score) display in the example?","options":["score","10","score = 10"],"right":1,"why":"Without quotes, score refers to the stored number 10."},
+    "hints":["Change the number on the assignment line.","Keep print(score), without quotes around score."],
+    "solution":"score = 25\nprint(score)\n","constructs":["Assign"],"checks":[{"output":"25","assertions":"assert score == 25\nassert any(isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == 'print' and any(isinstance(a, ast.Name) and a.id == 'score' for argument in n.args for a in ast.walk(argument)) for n in ast.walk(tree)), 'Use score inside print().'"}]
+  },
+  {
+    "id":"python-calculates","module":2,"title":"Let Python calculate","goal":"Use the four basic arithmetic operators.",
+    "explain":["Use + to add, - to subtract, * to multiply and / to divide. Python works out the expression before print() displays its value.","In Python 3, / produces a floating-point result: 20 / 4 is 5.0. Parentheses can make the order of a calculation clear."],
+    "young":"Use the star * for multiplication. It is not the letter x.","everyday":"Calculations can turn prices, distances or measurements into useful results.",
+    "example":"print(8 + 4)\nprint(5 * 3)\nprint(20 / 4)\n","exampleOutput":"12\n15\n5.0",
+    "challenge":"Calculate and print 9 + 6, 7 * 4 and 24 / 6, in that order. Print the expressions, rather than typing their answers.",
+    "prediction":{"question":"What does 20 / 4 display in Python 3?","options":["5.0","20 / 4","4"],"right":0,"why":"The / operator returns a floating-point number, even when the division is exact."},
+    "hints":["Use one print() for each calculation.","The last line can be print(24 / 6)."],
+    "solution":"print(9 + 6)\nprint(7 * 4)\nprint(24 / 6)\n","constructs":["BinOp"],"checks":[{"output":"15\n28\n4.0"}]
+  },
+  {
+    "id":"text-or-number","module":2,"title":"Text or number?","goal":"Distinguish strings from numbers.",
+    "explain":["A string is text written inside quotes. An integer is a whole number. Python treats \"7\" and 7 as different types of value.","For numbers, + means addition. For strings, + joins the text. Choose a type that matches the job you want to do."],
+    "young":"Joining two word cards is different from adding two amounts.","everyday":"A telephone number is usually text. A quantity you need to add is usually numeric.",
+    "example":"print(7 + 3)\nprint(\"7\" + \"3\")\n","exampleOutput":"10\n73",
+    "challenge":"Print the numeric sum of 12 and 8. On the next line, join the strings \"12\" and \"8\" using +.",
+    "prediction":{"question":"What does \"7\" + \"3\" produce?","options":["10","73","7 3"],"right":1,"why":"Both values are strings, so + joins their characters."},
+    "hints":["Use numbers without quotes on the first line.","Put each value inside quotes on the second line."],
+    "solution":"print(12 + 8)\nprint(\"12\" + \"8\")\n","constructs":["BinOp"],"checks":[{"output":"20\n128"}]
+  },
+  {
+    "id":"mini-receipt","module":2,"title":"Build a tiny receipt","goal":"Combine variables and arithmetic in a small project.",
+    "explain":["An expression can use variables as well as literal numbers. total = quantity * price calculates a result and gives it a useful name.","print() accepts several values separated by commas. It puts a space between them by default."],
+    "young":"Work out the cost of several identical items. Keep the quantity and price in named boxes.","everyday":"Separating quantity, price and total makes a receipt easy to update.",
+    "example":"quantity = 2\nprice = 100\ntotal = quantity * price\nprint(\"Total:\", total)\n","exampleOutput":"Total: 200",
+    "challenge":"Use quantity = 3 and price = 150. Calculate total from those variables and display Total: 450.",
+    "prediction":{"question":"What is total in the example?","options":["102","200","2100"],"right":1,"why":"Two items at 100 each cost 2 * 100 = 200."},
+    "hints":["Update both starting values.","Keep total = quantity * price so the result is calculated."],
+    "solution":"quantity = 3\nprice = 150\ntotal = quantity * price\nprint(\"Total:\", total)\n","constructs":["BinOp"],"checks":[{"output":"Total: 450","assertions":"assert quantity == 3 and price == 150 and total == 450"}]
+  },
+  {
+    "id":"ask-for-input","module":3,"title":"Ask a question","goal":"Receive text using input().",
+    "explain":["input() receives one line of text and returns it to your program. Store that response in a variable to use it later.","In this lab, enter responses in Program input before running. Each input() takes the next line. The output panel shows which responses were used."],
+    "young":"Let the person using your program choose a word. Use a made-up nickname instead of private information.","everyday":"An input makes a program reusable: the same instructions can work with different information.",
+    "example":"name = input(\"Nickname: \")\nprint(\"Hello,\", name)\n","exampleOutput":"Hello, Sam","input":"Sam",
+    "challenge":"Ask for a nickname with input(), then display Welcome, followed by that nickname with a space. The checker will try Ada and Lee.",
+    "prediction":{"question":"If Program input contains Sam, what is displayed?","options":["Hello, name","Hello, Sam","Sam = Hello"],"right":1,"why":"input() returns Sam, and name refers to that response."},
+    "hints":["Keep the input() instruction.","Change Hello, to Welcome, inside the print() string."],
+    "solution":"name = input(\"Nickname: \")\nprint(\"Welcome,\", name)\n","constructs":["call:input"],"checks":[{"input":"Ada","output":"Welcome, Ada"},{"input":"Lee","output":"Welcome, Lee"}]
+  },
+  {
+    "id":"convert-a-number","module":3,"title":"Turn text into a number","goal":"Convert whole-number input with int().",
+    "explain":["input() returns a string, even when someone types digits. int() converts whole-number text into an integer.","Converting \"8\" makes arithmetic possible. int(\"eight\") raises a ValueError because that text is not in the expected form."],
+    "young":"Turn a number written on a word card into an amount Python can add.","everyday":"Check whether entered information needs to be text, a whole number or a decimal before calculating.",
+    "example":"number = int(input(\"A whole number: \"))\nprint(number + 1)\n","exampleOutput":"9","input":"8",
+    "challenge":"Read a whole number using input(), convert it with int(), and print twice its value. Checks use 6, 0 and -3.",
+    "prediction":{"question":"With input 8, why does the example display 9 instead of 81?","options":["int() makes the response numeric","print() always adds one","input() returns no text"],"right":0,"why":"After conversion, number is an integer. Adding 1 performs arithmetic."},
+    "hints":["Use int(input(...)) to receive the whole number.","Multiply number by 2 inside print()."],
+    "solution":"number = int(input(\"A whole number: \"))\nprint(number * 2)\n","constructs":["call:input","call:int","BinOp"],"checks":[{"input":"6","output":"12"},{"input":"0","output":"0"},{"input":"-3","output":"-6"}]
+  },
+  {
+    "id":"friendly-messages","module":3,"title":"Build a friendly message","goal":"Insert values into text using an f-string.",
+    "explain":["An f-string starts with f before its opening quote. Expressions inside {curly braces} are replaced by their values.","f\"Score: {score}\" builds a readable string. The braces belong inside the quoted text."],
+    "young":"Leave a space in your message for a value. The curly braces tell Python where it belongs.","everyday":"Formatted messages are useful in reports, labels and summaries.",
+    "example":"score = 8\nprint(f\"Your score is {score}.\")\n","exampleOutput":"Your score is 8.",
+    "challenge":"Set language to \"Python\". Use an f-string to display I am learning Python. by inserting the variable language.",
+    "prediction":{"question":"What replaces {score} in the example?","options":["The word score","8","Nothing"],"right":1,"why":"The f-string evaluates score and inserts its value, 8."},
+    "hints":["Start your string with f\".","Put {language} where the language name should appear."],
+    "solution":"language = \"Python\"\nprint(f\"I am learning {language}.\")\n","constructs":["JoinedStr"],"checks":[{"output":"I am learning Python.","assertions":"assert language == 'Python'"}]
+  },
+  {
+    "id":"two-number-calculator","module":3,"title":"Make a reusable calculator","goal":"Read two decimal numbers and calculate a result.",
+    "explain":["float() converts suitable text into a decimal-capable number. Use it when values may contain a decimal point.","A program can call input() more than once. Supply the responses on separate lines in the same order as the questions."],
+    "young":"Give the calculator two amounts. Let it work out their total.","everyday":"The same calculator can add measurements or prices without changing its code.",
+    "example":"first = float(input(\"First: \"))\nsecond = float(input(\"Second: \"))\nprint(first + second)\n","exampleOutput":"7.5","input":"3\n4.5",
+    "challenge":"Change the calculator to print the product of two inputs. Keep float() so decimals work. Checks use 2.5 and 4, then -2 and 3.",
+    "prediction":{"question":"With inputs 3 and 4.5, what does the example display?","options":["34.5","7.5","12.0"],"right":1,"why":"Both responses are converted to numbers before addition."},
+    "hints":["Read both input lines before calculating.","Replace + with the multiplication operator *."],
+    "solution":"first = float(input(\"First: \"))\nsecond = float(input(\"Second: \"))\nprint(first * second)\n","constructs":["call:input","call:float","BinOp"],"checks":[{"input":"2.5\n4","output":"10.0"},{"input":"-2\n3","output":"-6.0"}]
+  },
+  {
+    "id":"true-or-false","module":4,"title":"Ask a true-or-false question","goal":"Compare values using Python operators.",
+    "explain":["A comparison produces a Boolean: True or False. Use == to compare equality, != for inequality, and <, >, <= or >= to compare order.","One equals sign assigns a value. Two equals signs compare values. True and False start with capital letters."],
+    "young":"Ask Python a question it can answer yes or no, such as whether 8 is bigger than 5.","everyday":"A comparison can test whether a target has been reached or whether two entries match.",
+    "example":"score = 8\nprint(score >= 5)\nprint(score == 10)\n","exampleOutput":"True\nFalse",
+    "challenge":"Set score to 10. Print the comparisons score >= 10 and score != 10, in that order.",
+    "prediction":{"question":"In the example, is score == 10 true?","options":["True","False","It changes score to 10"],"right":1,"why":"score is 8. == compares it with 10; it does not assign a new value."},
+    "hints":["Use == for equal and != for not equal.","With score = 10, the first comparison is True and the second is False."],
+    "solution":"score = 10\nprint(score >= 10)\nprint(score != 10)\n","constructs":["Compare"],"checks":[{"output":"True\nFalse","assertions":"assert score == 10"}]
+  },
+  {
+    "id":"choose-a-path","module":4,"title":"Choose one of two paths","goal":"Use if and else with correct indentation.",
+    "explain":["An if statement runs its indented block when its condition is true. An else block runs when that condition is false.","End if and else lines with colons. Indent the instructions inside each block consistently; four spaces is the usual style."],
+    "young":"If it rains, take an umbrella. Otherwise, choose the other message.","everyday":"A program can use different instructions when an item is available or a target has been met.",
+    "example":"weather = \"rainy\"\nif weather == \"rainy\":\n    print(\"Take an umbrella\")\nelse:\n    print(\"Enjoy the sunshine\")\n","exampleOutput":"Take an umbrella","input":"rainy",
+    "challenge":"Read weather with input(). Use if/else to display Take an umbrella for rainy, and Enjoy the sunshine for any other response.",
+    "prediction":{"question":"Which block runs for weather = \"rainy\" in the example?","options":["Both blocks","The if block","The else block"],"right":1,"why":"The condition is true, so only the indented if block runs."},
+    "hints":["Replace the first line with weather = input(\"Weather: \").", "Keep a colon after each branch and indent each print() by four spaces."],
+    "solution":"weather = input(\"Weather: \")\nif weather == \"rainy\":\n    print(\"Take an umbrella\")\nelse:\n    print(\"Enjoy the sunshine\")\n","constructs":["If","call:input"],"checks":[{"input":"rainy","output":"Take an umbrella"},{"input":"sunny","output":"Enjoy the sunshine"}]
+  },
+  {
+    "id":"another-choice","module":4,"title":"Add another choice","goal":"Use elif and understand the order of conditions.",
+    "explain":["elif checks another condition when an earlier condition was false. else handles the remaining cases.","Python takes the first matching branch and skips the rest. Test a more specific high threshold before a lower one that would also match."],
+    "young":"Check one question, then another. Stop at the first path that fits.","everyday":"Ordered conditions can group scores, quantities or measurements into useful bands.",
+    "example":"score = 75\nif score >= 80:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Good effort\")\nelse:\n    print(\"Keep practising\")\n","exampleOutput":"Good effort","input":"75",
+    "challenge":"Read an integer score with input(). Keep these bands and messages: at least 80 → Excellent; at least 50 → Good effort; otherwise → Keep practising.",
+    "prediction":{"question":"What does score = 75 display in the example?","options":["Excellent","Good effort","Keep practising"],"right":1,"why":"75 is below 80 but at least 50, so the elif branch is the first match."},
+    "hints":["Use int(input(...)) for the score.","Keep the >= 80 test before the >= 50 test."],
+    "solution":"score = int(input(\"Score: \"))\nif score >= 80:\n    print(\"Excellent\")\nelif score >= 50:\n    print(\"Good effort\")\nelse:\n    print(\"Keep practising\")\n","constructs":["If","call:input"],"checks":[{"input":"80","output":"Excellent"},{"input":"50","output":"Good effort"},{"input":"49","output":"Keep practising"}]
+  },
+  {
+    "id":"combine-conditions","module":4,"title":"Combine two conditions","goal":"Use and, or and not to express a rule.",
+    "explain":["and is true when both conditions are true. or is true when at least one is true. not reverses a Boolean value.","Write a rule in everyday language first, then turn each part into a comparison. Parentheses can help readers see how parts fit together."],
+    "young":"Can we choose this activity? It might need two things to be true at the same time.","everyday":"A measurement may need to be above a minimum and below a maximum.",
+    "example":"number = 5\nprint(number >= 1 and number <= 10)\n","exampleOutput":"True","input":"5",
+    "challenge":"Read an integer. Print Inside if it is between 1 and 10 inclusive, otherwise print Outside. Use and to combine the comparisons.",
+    "prediction":{"question":"Is the example's combined condition true for 5?","options":["True","False","Only the first comparison runs"],"right":0,"why":"5 is at least 1 and at most 10, so both parts are true."},
+    "hints":["Inclusive means that 1 and 10 also count as Inside.","Use if number >= 1 and number <= 10:."],
+    "solution":"number = int(input(\"Number: \"))\nif number >= 1 and number <= 10:\n    print(\"Inside\")\nelse:\n    print(\"Outside\")\n","constructs":["BoolOp","If","call:input"],"checks":[{"input":"1","output":"Inside"},{"input":"10","output":"Inside"},{"input":"0","output":"Outside"},{"input":"11","output":"Outside"}]
+  },
+  {
+    "id":"repeat-a-message","module":5,"title":"Repeat without retyping","goal":"Repeat an instruction with for and range().",
+    "explain":["A loop repeats instructions. for count in range(3) visits 0, 1 and 2, running its indented block three times.","The colon begins the block. Instructions that are not indented are outside the loop."],
+    "young":"Ask the computer to do the same helpful action several times.","everyday":"Loops avoid duplicated instructions when processing repeated tasks.",
+    "example":"for count in range(3):\n    print(\"Keep going!\")\n","exampleOutput":"Keep going!\nKeep going!\nKeep going!",
+    "challenge":"Use one for loop to display One more step! four times, each on its own line.",
+    "prediction":{"question":"How many times does the example print its message?","options":["Two","Three","Four"],"right":1,"why":"range(3) supplies three values. The print() instruction runs once for each value."},
+    "hints":["Change range(3) to range(4).", "Keep only one print() line inside the loop."],
+    "solution":"for count in range(4):\n    print(\"One more step!\")\n","constructs":["For"],"checks":[{"output":"One more step!\nOne more step!\nOne more step!\nOne more step!"}]
+  },
+  {
+    "id":"count-with-range","module":5,"title":"Count and make a pattern","goal":"Choose the start, stop and step of a range.",
+    "explain":["range(start, stop) includes start but stops before stop. range(1, 4) therefore gives 1, 2 and 3.","A third argument sets the step. range(2, 9, 2) gives 2, 4, 6 and 8."],
+    "young":"The stop number is the fence: the count stops before reaching it.","everyday":"Ranges can produce numbered labels or process every second item.",
+    "example":"for number in range(1, 4):\n    print(number)\n","exampleOutput":"1\n2\n3",
+    "challenge":"Use a for loop and range() to display 2, 4, 6, 8 and 10 on separate lines.",
+    "prediction":{"question":"Why is 4 absent from the example's output?","options":["The stop value is excluded","Only even numbers print","Python skips the last line"],"right":0,"why":"The stop argument in range() is excluded. range(1, 4) ends at 3."},
+    "hints":["Start at 2 and use a step of 2.","The stop value must be above 10, such as 11."],
+    "solution":"for number in range(2, 11, 2):\n    print(number)\n","constructs":["For","call:range"],"checks":[{"output":"2\n4\n6\n8\n10"}]
+  },
+  {
+    "id":"while-a-condition","module":5,"title":"Repeat while something is true","goal":"Use a while loop that makes progress towards stopping.",
+    "explain":["A while loop checks its condition before every repetition. It continues while that condition is true.","Update something that affects the condition. Otherwise the loop may never end. Use Stop if an experiment keeps running."],
+    "young":"Count down until there is nothing left to count. Remember to change the number each time.","everyday":"A while loop is useful when repetition depends on a condition rather than a fixed collection.",
+    "example":"count = 3\nwhile count > 0:\n    print(count)\n    count = count - 1\nprint(\"Go!\")\n","exampleOutput":"3\n2\n1\nGo!",
+    "challenge":"Start at 5. Use while to count down to 1, then display Go! once after the loop.",
+    "prediction":{"question":"What makes the example eventually stop looping?","options":["Printing Go!","Decreasing count each time","The colon"],"right":1,"why":"count falls to 0. The condition count > 0 then becomes false."},
+    "hints":["Change the starting count to 5.","Keep the decrement inside the loop and print(\"Go!\") outside it."],
+    "solution":"count = 5\nwhile count > 0:\n    print(count)\n    count = count - 1\nprint(\"Go!\")\n","constructs":["While"],"checks":[{"output":"5\n4\n3\n2\n1\nGo!"}]
+  },
+  {
+    "id":"loop-and-total","module":5,"title":"Build a running total","goal":"Combine a loop, a decision and an accumulator.",
+    "explain":["An accumulator stores a result that grows as a loop runs. Start total at 0, then add each number you want to include.","The % operator gives a remainder. number % 2 == 0 is true for even integers. break exits a loop; continue skips to its next repetition."],
+    "young":"Keep a running score. Add only the numbers that match your rule.","everyday":"The same pattern can total selected transactions or count items that meet a condition.",
+    "example":"total = 0\nfor number in range(1, 5):\n    total = total + number\nprint(total)\n","exampleOutput":"10",
+    "challenge":"Use a loop and an if condition to add only the even numbers from 1 through 10. Print the total once, after the loop.",
+    "prediction":{"question":"What is the example's final total?","options":["4","10","15"],"right":1,"why":"The loop adds 1 + 2 + 3 + 4, giving 10."},
+    "hints":["Use range(1, 11) to include 10.","Inside the loop, add number only if number % 2 == 0."],
+    "solution":"total = 0\nfor number in range(1, 11):\n    if number % 2 == 0:\n        total = total + number\nprint(total)\n","constructs":["For","If"],"checks":[{"output":"30","assertions":"assert total == 30"}]
+  },
+  {
+    "id":"work-with-words","module":6,"title":"Look inside a word","goal":"Use string indexing, length and slices.",
+    "explain":["String positions start at 0. word[0] is the first character and word[-1] is the last. len(word) counts the characters.","A slice such as word[0:3] takes characters starting at position 0 and stopping before position 3. A step of -1 can reverse a string: word[::-1]."],
+    "young":"Count the letters, find the first one and try reading a word backwards.","everyday":"Slices are useful for extracting parts of labels, codes and text records.",
+    "example":"word = \"Python\"\nprint(word[0])\nprint(len(word))\nprint(word[0:3])\n","exampleOutput":"P\n6\nPyt","input":"Python",
+    "challenge":"Read a non-empty word. Print its first character, its length and its reversed form on separate lines. Checks use Python and code.",
+    "prediction":{"question":"Which character is at position 0 in Python?","options":["P","y","n"],"right":0,"why":"Python uses zero-based indexing, so position 0 is the first character."},
+    "hints":["Use word[0] and len(word) for the first two outputs.","Use word[::-1] to reverse the string."],
+    "solution":"word = input(\"Word: \")\nprint(word[0])\nprint(len(word))\nprint(word[::-1])\n","constructs":["Subscript","call:input"],"checks":[{"input":"Python","output":"P\n6\nnohtyP"},{"input":"code","output":"c\n4\nedoc"}]
+  },
+  {
+    "id":"clean-up-text","module":6,"title":"Clean up text","goal":"Use string methods without changing the original string.",
+    "explain":["A method is an operation called on a value using a dot. text.strip() removes surrounding whitespace; text.lower() returns a lowercase version.","Strings are immutable: these methods return new strings. Save the returned value if you want to use the cleaned text later."],
+    "young":"Tidy a word by removing spare spaces and making its letters lowercase.","everyday":"Cleaning text can make searches and comparisons work consistently when people type differently.",
+    "example":"text = \"  PYTHON  \"\nclean = text.strip().lower()\nprint(clean)\n","exampleOutput":"python","input":"  PYTHON  ",
+    "challenge":"Read a line, remove spaces at both ends, convert it to lowercase and print the cleaned text. Keep spaces between words.",
+    "prediction":{"question":"What does the example display?","options":["  PYTHON  ","python","PYTHON"],"right":1,"why":"strip() removes surrounding spaces and lower() changes the letter case."},
+    "hints":["Store the input() response in text.","Use text.strip().lower() and print its returned string."],
+    "solution":"text = input(\"Text: \")\nclean = text.strip().lower()\nprint(clean)\n","constructs":["Attribute","call:input"],"checks":[{"input":"  PYTHON  ","output":"python"},{"input":"  Hello World  ","output":"hello world"}]
+  },
+  {
+    "id":"make-a-list","module":6,"title":"Keep several items together","goal":"Create, update and index a list.",
+    "explain":["A list keeps items in order inside square brackets, separated by commas. Its positions start at 0, just like string positions.","Lists are mutable. append() adds an item to the end, and items[0] = value replaces the first item."],
+    "young":"A list can hold the things you need for an activity, in a useful order.","everyday":"Use lists for tasks, measurements, shopping items or a sequence of results.",
+    "example":"items = [\"Book\", \"Pen\"]\nitems.append(\"Bag\")\nprint(items[0])\nprint(len(items))\n","exampleOutput":"Book\n3",
+    "challenge":"Create items containing Book and Pen. Append Ruler. Print the last item and the number of items, on separate lines.",
+    "prediction":{"question":"After append(), how many items are in the example's list?","options":["Two","Three","Four"],"right":1,"why":"The original two items remain and Bag is added at the end."},
+    "hints":["Use items.append(\"Ruler\").", "items[-1] gives the last item and len(items) gives the count."],
+    "solution":"items = [\"Book\", \"Pen\"]\nitems.append(\"Ruler\")\nprint(items[-1])\nprint(len(items))\n","constructs":["List","Attribute"],"checks":[{"output":"Ruler\n3","assertions":"assert items == ['Book', 'Pen', 'Ruler']"}]
+  },
+  {
+    "id":"loop-through-list","module":6,"title":"Visit every item","goal":"Loop over a list and build a new result.",
+    "explain":["for item in items visits the values in a list one at a time, in order. The loop variable holds the current value.","You can transform each value and append the result to a new list. A list comprehension is a shorter version of this pattern, such as [n * 2 for n in numbers]."],
+    "young":"Visit each item in turn. Do the same useful action for every item.","everyday":"A loop can process a collection of measurements or turn raw values into a report.",
+    "example":"fruits = [\"Mango\", \"Apple\", \"Banana\"]\nfor fruit in fruits:\n    print(fruit)\n","exampleOutput":"Mango\nApple\nBanana",
+    "challenge":"Create numbers = [2, 4, 6]. Use a for loop to print each number doubled, on separate lines.",
+    "prediction":{"question":"Which fruit is displayed second in the example?","options":["Banana","Mango","Apple"],"right":2,"why":"The loop visits the list values in their original order."},
+    "hints":["Use for number in numbers:.","Print number * 2 inside the loop."],
+    "solution":"numbers = [2, 4, 6]\nfor number in numbers:\n    print(number * 2)\n","constructs":["For","List"],"checks":[{"output":"4\n8\n12","assertions":"assert numbers == [2, 4, 6]"}]
+  },
+  {
+    "id":"named-information","module":7,"title":"Give each detail a key","goal":"Store related details in a dictionary.",
+    "explain":["A dictionary stores key–value pairs inside curly braces. profile = {\"name\": \"Ada\", \"score\": 8} connects each key with a value.","Use profile[\"name\"] to read a value by its key. Use a clear key instead of relying on a numbered position."],
+    "young":"Put a label beside every detail so you can ask for the one you need.","everyday":"Dictionaries can describe a product, a contact or a single record in a report.",
+    "example":"profile = {\"name\": \"Ada\", \"score\": 8}\nprint(profile[\"name\"])\nprint(profile[\"score\"])\n","exampleOutput":"Ada\n8",
+    "challenge":"Create a dictionary named book with title = Python Guide and pages = 120. Print its title and page count, on separate lines.",
+    "prediction":{"question":"What does profile[\"score\"] return in the example?","options":["score","Ada","8"],"right":2,"why":"The key score is connected to the integer value 8."},
+    "hints":["Use colons between keys and values, and commas between pairs.","Write book[\"title\"] and book[\"pages\"] to read the two values."],
+    "solution":"book = {\"title\": \"Python Guide\", \"pages\": 120}\nprint(book[\"title\"])\nprint(book[\"pages\"])\n","constructs":["Dict"],"checks":[{"output":"Python Guide\n120","assertions":"assert book == {'title': 'Python Guide', 'pages': 120}"}]
+  },
+  {
+    "id":"dictionary-updates","module":7,"title":"Update and safely look up","goal":"Change a dictionary value and use get().",
+    "explain":["Assign to an existing key to update its value. Assign to a new key to add a pair.","dictionary.get(key, default) returns the default if the key is missing. A direct lookup with square brackets raises KeyError for a missing key."],
+    "young":"Change one labelled detail. Have a friendly answer ready if another label is missing.","everyday":"A default value helps a report handle optional information without crashing.",
+    "example":"stock = {\"pens\": 3}\nstock[\"pens\"] = 5\nprint(stock.get(\"pens\", 0))\nprint(stock.get(\"books\", 0))\n","exampleOutput":"5\n0",
+    "challenge":"Create stock with pens set to 3. Add 2 to that value. Print the updated pens value and stock.get(\"rulers\", 0), on separate lines.",
+    "prediction":{"question":"Why does the second line of output show 0?","options":["books is missing and get() uses its default","All missing keys exist automatically","The dictionary is empty"],"right":0,"why":"get() returns the supplied default, 0, without adding a new key."},
+    "hints":["Use stock[\"pens\"] = stock[\"pens\"] + 2.","Use get() for rulers, which is not in the dictionary."],
+    "solution":"stock = {\"pens\": 3}\nstock[\"pens\"] = stock[\"pens\"] + 2\nprint(stock[\"pens\"])\nprint(stock.get(\"rulers\", 0))\n","constructs":["Dict","Attribute","BinOp"],"checks":[{"output":"5\n0","assertions":"assert stock['pens'] == 5 and 'rulers' not in stock"}]
+  },
+  {
+    "id":"tuples-and-sets","module":7,"title":"Choose a collection","goal":"Recognise tuples and sets and choose them for a purpose.",
+    "explain":["A tuple is an ordered collection that cannot have its items replaced. A set keeps unique values and does not promise a useful display order.","Use a tuple for a fixed group such as coordinates. Use a set to remove duplicates or test membership. sorted() can produce a predictable ordered list for display."],
+    "young":"Some collections keep a fixed group. Others keep just one copy of each different item.","everyday":"Sets help find distinct categories or remove repeated entries from a report.",
+    "example":"point = (3, 4)\ncolours = {\"red\", \"blue\", \"red\"}\nprint(point[0])\nprint(len(colours))\n","exampleOutput":"3\n2",
+    "challenge":"Use set() to remove duplicates from [3, 1, 3, 2, 1]. Print the sorted unique values as a list, then print their count.",
+    "prediction":{"question":"How many unique colours are in the example?","options":["One","Two","Three"],"right":1,"why":"red appears twice in the source, but a set stores only one copy of it."},
+    "hints":["Use unique = set([3, 1, 3, 2, 1]).", "Print sorted(unique), then len(unique)."],
+    "solution":"unique = set([3, 1, 3, 2, 1])\nprint(sorted(unique))\nprint(len(unique))\n","constructs":["call:set"],"checks":[{"output":"[1, 2, 3]\n3","assertions":"assert unique == {1, 2, 3}"}]
+  },
+  {
+    "id":"collection-project","module":7,"title":"Make a small data report","goal":"Combine dictionaries, collections and a loop.",
+    "explain":["A list can contain dictionaries. Each dictionary can describe one record using the same set of keys.","Build the simplest useful report first. Then add one improvement, such as a filter or a total, and check the result."],
+    "young":"Keep several labelled cards in a list. Read the detail you need from each card.","everyday":"A list of records can represent products, tasks or entries in a small report.",
+    "example":"products = [{\"name\": \"Pen\", \"price\": 50}, {\"name\": \"Book\", \"price\": 200}]\nfor product in products:\n    print(product[\"name\"])\n","exampleOutput":"Pen\nBook",
+    "challenge":"Create products containing Pen at 50, Book at 200 and Ruler at 75. Loop through the records and print only names with a price of at least 100.",
+    "prediction":{"question":"Why does the example print Pen before Book?","options":["Dictionaries always sort names","The list stores those records in that order","Python chooses randomly"],"right":1,"why":"The outer list supplies a predictable order; each record supplies its named details."},
+    "hints":["Inside the loop, compare product[\"price\"] with 100.","Print product[\"name\"] only inside the if block."],
+    "solution":"products = [{\"name\": \"Pen\", \"price\": 50}, {\"name\": \"Book\", \"price\": 200}, {\"name\": \"Ruler\", \"price\": 75}]\nfor product in products:\n    if product[\"price\"] >= 100:\n        print(product[\"name\"])\n","constructs":["List","Dict","For","If"],"checks":[{"output":"Book","assertions":"assert len(products) == 3"}]
+  },
+  {
+    "id":"first-function","module":8,"title":"Name a reusable action","goal":"Define and call a function.",
+    "explain":["def introduces a function: a named group of instructions you can reuse. Its indented body runs when the function is called.","Defining a function does not run its body. Write the function's name followed by parentheses to call it."],
+    "young":"Teach the computer a small routine, give it a name and ask for it when you need it.","everyday":"Functions let a long program describe useful actions without repeating their implementation.",
+    "example":"def greet():\n    print(\"Welcome!\")\n\ngreet()\n","exampleOutput":"Welcome!",
+    "challenge":"Define a function named encourage that prints You can do this! Call it twice.",
+    "prediction":{"question":"When does the example's function body run?","options":["When def is first read","When greet() is called","Only when the file is saved"],"right":1,"why":"def creates the function; the later call executes its body."},
+    "hints":["Write def encourage():, then indent the print() line.","Put two encourage() calls outside the indented body."],
+    "solution":"def encourage():\n    print(\"You can do this!\")\n\nencourage()\nencourage()\n","constructs":["FunctionDef"],"checks":[{"output":"You can do this!\nYou can do this!","assertions":"assert callable(encourage)"}]
+  },
+  {
+    "id":"arguments-and-returns","module":8,"title":"Give a function an input and a result","goal":"Use parameters and return values.",
+    "explain":["A parameter is a name in a function definition. An argument is the value supplied in a call.","return sends a value back to the caller. print() displays information; it does not replace return when another calculation needs the result."],
+    "young":"Give your little tool a number. Let it send a new number back.","everyday":"Returning results makes functions easy to combine and test.",
+    "example":"def double(number):\n    return number * 2\n\nprint(double(4))\n","exampleOutput":"8",
+    "challenge":"Define triple(number) so it returns three times its argument. Print triple(5). The checker also calls your function with 0 and -2.",
+    "prediction":{"question":"What value does double(4) return?","options":["2","4","8"],"right":2,"why":"The function multiplies its parameter by 2 and returns that result."},
+    "hints":["Change the function name to triple and the multiplier to 3.","Use return inside the function, then print(triple(5)) outside."],
+    "solution":"def triple(number):\n    return number * 3\n\nprint(triple(5))\n","constructs":["FunctionDef","Return"],"checks":[{"output":"15","assertions":"assert triple(0) == 0, 'triple(0) should return 0.'\nassert triple(-2) == -6, 'triple(-2) should return -6.'\nassert triple(7) == 21, 'Use the argument rather than a fixed answer.'"}]
+  },
+  {
+    "id":"scope-and-defaults","module":8,"title":"Keep a function self-contained","goal":"Use local names and a default parameter.",
+    "explain":["Names assigned inside a function are usually local to that function. Pass the information it needs as parameters instead of depending on unrelated global names.","A default parameter supplies a value when the caller omits that argument. Use simple immutable defaults, such as a number or string, at this stage."],
+    "young":"Give a tool the pieces it needs. It can use a usual amount when no new amount is supplied.","everyday":"A self-contained function is easier to reuse in another program and less likely to change unrelated data.",
+    "example":"def add_bonus(score, bonus=2):\n    result = score + bonus\n    return result\n\nprint(add_bonus(5))\nprint(add_bonus(5, 4))\n","exampleOutput":"7\n9",
+    "challenge":"Define add_bonus(score, bonus=3) to return score + bonus. Print add_bonus(7) and add_bonus(7, 5) on separate lines.",
+    "prediction":{"question":"What does add_bonus(5) use as bonus in the example?","options":["0","2","5"],"right":1,"why":"The call omits bonus, so the default value 2 is used."},
+    "hints":["Put bonus=3 in the function definition.","Return the sum so the caller can display or reuse it."],
+    "solution":"def add_bonus(score, bonus=3):\n    result = score + bonus\n    return result\n\nprint(add_bonus(7))\nprint(add_bonus(7, 5))\n","constructs":["FunctionDef","Return"],"checks":[{"output":"10\n12","assertions":"assert add_bonus(0) == 3\nassert add_bonus(-2, 1) == -1"}]
+  },
+  {
+    "id":"use-a-module","module":8,"title":"Use a ready-made tool","goal":"Import a standard-library module.",
+    "explain":["A module groups reusable Python tools. import math makes tools in the math module available through names such as math.sqrt.","The standard library includes tools for numbers, dates, text and structured data. Some desktop-specific modules and external packages do not work in a browser."],
+    "young":"Python has a toolbox. Import the toolbox you need, then choose a tool from it.","everyday":"Before writing a complicated tool yourself, check whether the standard library already has a reliable one.",
+    "example":"import math\nprint(math.sqrt(25))\nprint(math.ceil(2.2))\n","exampleOutput":"5.0\n3",
+    "challenge":"Import math. Print the square root of 81 and the ceiling of 4.2, on separate lines.",
+    "prediction":{"question":"Why does math.ceil(2.2) return 3?","options":["It rounds upwards to the next integer","It removes every decimal digit","It doubles the number"],"right":0,"why":"ceil() returns the smallest integer that is at least as large as its input."},
+    "hints":["Keep import math at the top.","Use math.sqrt(81) and math.ceil(4.2)."],
+    "solution":"import math\nprint(math.sqrt(81))\nprint(math.ceil(4.2))\n","constructs":["Import","Attribute"],"checks":[{"output":"9.0\n5"}]
+  },
+  {
+    "id":"handle-an-error","module":9,"title":"Handle an expected error","goal":"Use try/except for invalid numeric input.",
+    "explain":["An exception reports a problem during execution. A ValueError can occur when int() receives text that does not represent a whole number.","Put the operation that may fail inside try. Catch the specific expected exception with except ValueError. Avoid hiding every possible problem with a broad except."],
+    "young":"Have a friendly backup message if the person types a word instead of a number.","everyday":"Input validation helps a program recover from ordinary mistakes without concealing unexpected bugs.",
+    "example":"try:\n    number = int(input(\"Whole number: \"))\n    print(number + 1)\nexcept ValueError:\n    print(\"Please enter a whole number\")\n","exampleOutput":"Please enter a whole number","input":"hello",
+    "challenge":"Read a whole number inside try. Print its double if conversion succeeds. Catch ValueError and print Please enter a whole number for invalid text.",
+    "prediction":{"question":"What happens when the example receives hello?","options":["It prints 1","The ValueError handler prints a helpful message","It treats hello as 0"],"right":1,"why":"int(\"hello\") raises ValueError, so Python follows the matching except block."},
+    "hints":["Keep the conversion inside try.","Use print(number * 2) for the successful path."],
+    "solution":"try:\n    number = int(input(\"Whole number: \"))\n    print(number * 2)\nexcept ValueError:\n    print(\"Please enter a whole number\")\n","constructs":["Try","call:input"],"checks":[{"input":"4","output":"8"},{"input":"-2","output":"-4"},{"input":"hello","output":"Please enter a whole number"}]
+  },
+  {
+    "id":"test-your-thinking","module":9,"title":"Test more than one example","goal":"Check normal, boundary and unexpected cases.",
+    "explain":["A program that works once may still contain a bug. Try ordinary values, a boundary such as 0, and values that could reveal a wrong assumption.","assert checks a condition and raises AssertionError if it is false. A passing assertion produces no output. Assertions are useful for learning and testing, not for validating security-sensitive input."],
+    "young":"Try your tool with a usual number, zero and a negative number. Does your rule still work?","everyday":"Small tests make it easier to change a program without accidentally breaking earlier behaviour.",
+    "example":"def is_even(number):\n    return number % 2 == 0\n\nassert is_even(4) == True\nassert is_even(3) == False\nprint(\"Tests passed\")\n","exampleOutput":"Tests passed",
+    "challenge":"Keep is_even(number). Add assertions that 0 and -2 are even and 3 is not even. Display Tests passed after the checks.",
+    "prediction":{"question":"What does a passing assert print?","options":["True","Nothing","AssertionError"],"right":1,"why":"A passing assertion is silent. The example's output comes from its final print()."},
+    "hints":["Use assert is_even(0) == True and assert is_even(-2) == True.","Put the print() after the assertions, so it runs only if they pass."],
+    "solution":"def is_even(number):\n    return number % 2 == 0\n\nassert is_even(0) == True\nassert is_even(-2) == True\nassert is_even(3) == False\nprint(\"Tests passed\")\n","constructs":["Assert","FunctionDef"],"checks":[{"output":"Tests passed","assertions":"assert is_even(0) and is_even(-2) and not is_even(3)\nassert len([n for n in ast.walk(tree) if isinstance(n, ast.Assert)]) >= 3, 'Include at least three assertions.'"}]
+  },
+  {
+    "id":"save-a-text-file","module":9,"title":"Read and write a text file","goal":"Use with and open() to keep text in a file.",
+    "explain":["open() opens a file. Mode \"w\" writes a new version; mode \"r\" reads. A with block closes the file when the block ends.","Files here live in the current browser run, not directly on your computer's disk. Download an output file to keep it, or attach a text, CSV or JSON file in the playground for a later run."],
+    "young":"Save a little note, then open it and read what you saved.","everyday":"Reading and writing files is the basis of many reports and small automation tasks.",
+    "example":"with open(\"note.txt\", \"w\", encoding=\"utf-8\") as file:\n    file.write(\"Keep learning\")\n\nwith open(\"note.txt\", \"r\", encoding=\"utf-8\") as file:\n    print(file.read())\n","exampleOutput":"Keep learning",
+    "challenge":"Write I made a file! to note.txt using a with block. Read the file in another with block and print its contents.",
+    "prediction":{"question":"What does opening a file with mode w do?","options":["Reads without changing it","Writes a new version, replacing existing contents","Always adds to the end"],"right":1,"why":"Mode w writes from the beginning and truncates an existing file. Use it deliberately."},
+    "hints":["Change the string passed to file.write().", "Keep the read block so the displayed text comes from the saved file."],
+    "solution":"with open(\"note.txt\", \"w\", encoding=\"utf-8\") as file:\n    file.write(\"I made a file!\")\n\nwith open(\"note.txt\", \"r\", encoding=\"utf-8\") as file:\n    print(file.read())\n","constructs":["With","call:open"],"checks":[{"output":"I made a file!","assertions":"assert open('note.txt', encoding='utf-8').read() == 'I made a file!'"}]
+  },
+  {
+    "id":"save-structured-data","module":9,"title":"Save structured information","goal":"Convert between a dictionary and JSON text.",
+    "explain":["JSON is a text format for sharing structured data. json.dumps() turns suitable Python values into JSON text; json.loads() reads JSON text back into Python values.","Do not confuse a dictionary with its JSON string representation. A loaded dictionary lets you look up values by key again. The csv module is another useful tool for table-shaped text."],
+    "young":"Turn a labelled card into text that can be saved, then turn it back into a card.","everyday":"JSON is common in configuration files and data exchanged between applications.",
+    "example":"import json\nprofile = {\"name\": \"Ada\", \"score\": 8}\ntext = json.dumps(profile)\nrestored = json.loads(text)\nprint(restored[\"name\"])\n","exampleOutput":"Ada",
+    "challenge":"Create profile with name = Lee and score = 12. Convert it to JSON and back. Print the restored name and score on separate lines.",
+    "prediction":{"question":"What is the type of text after json.dumps(profile)?","options":["A string containing JSON","A dictionary","An integer"],"right":0,"why":"dumps() returns JSON text. loads() turns that text back into a Python value."},
+    "hints":["Use json.dumps(profile), then json.loads(text).", "Read restored[\"name\"] and restored[\"score\"]."],
+    "solution":"import json\nprofile = {\"name\": \"Lee\", \"score\": 12}\ntext = json.dumps(profile)\nrestored = json.loads(text)\nprint(restored[\"name\"])\nprint(restored[\"score\"])\n","constructs":["Import","Dict","Attribute"],"checks":[{"output":"Lee\n12","assertions":"assert isinstance(text, str) and restored == {'name': 'Lee', 'score': 12}"}]
+  },
+  {
+    "id":"objects-and-classes","module":10,"title":"Describe a kind of thing","goal":"Create a simple class and an instance.",
+    "explain":["A class describes a kind of object. An instance is one particular object created from that class.","__init__ sets up an instance. self refers to the instance currently being used. self.name stores an attribute on that object."],
+    "young":"A class is a plan for making similar things. Each thing made from the plan can have its own name.","everyday":"Objects can group related information and behaviour, such as the details of one task or one product.",
+    "example":"class Learner:\n    def __init__(self, name):\n        self.name = name\n\nlearner = Learner(\"Ada\")\nprint(learner.name)\n","exampleOutput":"Ada",
+    "challenge":"Define a class called Book. Its __init__ should store a title argument in self.title. Create book = Book(\"Python Guide\") and print book.title.",
+    "prediction":{"question":"What is learner in the example?","options":["An instance of Learner","The class definition itself","A comment"],"right":0,"why":"Calling Learner(\"Ada\") creates an instance with its own name attribute."},
+    "hints":["Use class Book: and indent the __init__ function inside it.","Inside __init__, assign self.title = title."],
+    "solution":"class Book:\n    def __init__(self, title):\n        self.title = title\n\nbook = Book(\"Python Guide\")\nprint(book.title)\n","constructs":["ClassDef"],"checks":[{"output":"Python Guide","assertions":"assert isinstance(book, Book)\nassert Book('Another title').title == 'Another title'"}]
+  },
+  {
+    "id":"give-objects-actions","module":10,"title":"Give an object an action","goal":"Use a method to update an instance.",
+    "explain":["A method is a function defined inside a class. Its self parameter gives it access to the instance's attributes.","Two instances keep their own state. Updating one should not unexpectedly change the other."],
+    "young":"Make two separate scorekeepers. Each one remembers its own score.","everyday":"A small object can keep related operations together while preserving separate records.",
+    "example":"class Counter:\n    def __init__(self):\n        self.value = 0\n\n    def add(self):\n        self.value += 1\n\ncounter = Counter()\ncounter.add()\nprint(counter.value)\n","exampleOutput":"1",
+    "challenge":"Keep the Counter class. Create counter, call add() three times, and print counter.value. The checker will also try a separate instance.",
+    "prediction":{"question":"What is counter.value after one add() in the example?","options":["0","1","3"],"right":1,"why":"__init__ starts value at 0 and the method adds 1 to that instance."},
+    "hints":["Keep the method's update to self.value.","Call counter.add() three times before printing."],
+    "solution":"class Counter:\n    def __init__(self):\n        self.value = 0\n\n    def add(self):\n        self.value += 1\n\ncounter = Counter()\ncounter.add()\ncounter.add()\ncounter.add()\nprint(counter.value)\n","constructs":["ClassDef"],"checks":[{"output":"3","assertions":"assert counter.value == 3\nother = Counter()\nassert other.value == 0, 'A new counter should start at zero.'\nother.add()\nassert other.value == 1 and counter.value == 3, 'Instances should keep separate values.'"}]
+  },
+  {
+    "id":"build-a-quiz","module":10,"title":"Project: a tiny quiz","goal":"Combine input, text cleaning, decisions and functions.",
+    "explain":["Plan a project as small steps: receive an answer, clean it, compare it, then return feedback. Test the parts before adding more questions.","A function makes the rule reusable. Check both a matching and a non-matching answer, including differences in case and surrounding spaces."],
+    "young":"Ask one question and give a helpful response. Start small, then invent your own quiz.","everyday":"A small quiz combines the same input, transformation and decision patterns used in many practical tools.",
+    "example":"def check_answer(answer):\n    if answer.strip().lower() == \"python\":\n        return \"Correct\"\n    return \"Try again\"\n\nanswer = input(\"Which language are we learning? \" )\nprint(check_answer(answer))\n","exampleOutput":"Correct","input":"Python",
+    "challenge":"Build the quiz from the example: check_answer(answer) returns Correct for python regardless of letter case or surrounding spaces, and Try again otherwise. Read one answer and print the result.",
+    "prediction":{"question":"What does the example return for an answer of PYTHON with spaces around it?","options":["Try again","Correct","A ValueError"],"right":1,"why":"strip().lower() turns that response into python before the comparison."},
+    "hints":["Keep the cleaning inside the function so every call benefits.","Return feedback from the function and print it at the call site."],
+    "solution":"def check_answer(answer):\n    if answer.strip().lower() == \"python\":\n        return \"Correct\"\n    return \"Try again\"\n\nanswer = input(\"Which language are we learning? \" )\nprint(check_answer(answer))\n","constructs":["FunctionDef","If","Return","call:input"],"checks":[{"input":"  PYTHON  ","output":"Correct","assertions":"assert check_answer('Python') == 'Correct'\nassert check_answer('Java') == 'Try again'"},{"input":"java","output":"Try again"}]
+  },
+  {
+    "id":"your-first-useful-tool","module":10,"title":"Project: your first useful tool","goal":"Build and test a small program, then make it your own.",
+    "explain":["Choose a small purpose, name the inputs and expected result, write one function, then test ordinary and boundary values. Explain why each part exists.","This course gives you a foundation, not every feature of Python. Next, adapt this project in the playground, read the official documentation and try Python on your own device when you need desktop tools or larger projects."],
+    "young":"Make a little tool you can explain to someone else. What will you change next?","everyday":"A reusable total is a starting point for a shopping helper, an expense summary or a measurement report.",
+    "example":"def total_cost(prices):\n    total = 0\n    for price in prices:\n        total += price\n    return total\n\nprint(\"Total:\", total_cost([100, 50, 25]))\n","exampleOutput":"Total: 175",
+    "challenge":"Define total_cost(prices) to return the sum of a list using a loop. Print Total: 450 for [100, 200, 150]. It must also return 0 for an empty list and work with decimal values.",
+    "prediction":{"question":"Why should total begin at 0?","options":["It makes an empty list total 0 and gives addition a starting value","It prevents the loop from running","Every list starts at zero"],"right":0,"why":"An accumulator needs an initial value. Zero also gives the correct result when there are no prices to visit."},
+    "hints":["Keep the loop inside the function and return after the loop ends.","Test total_cost([]) and total_cost([2.5, 1.5]) before your final print()."],
+    "solution":"def total_cost(prices):\n    total = 0\n    for price in prices:\n        total += price\n    return total\n\nprint(\"Total:\", total_cost([100, 200, 150]))\n","constructs":["FunctionDef","For","Return"],"checks":[{"output":"Total: 450","assertions":"assert total_cost([]) == 0, 'An empty list should total zero.'\nassert total_cost([2.5, 1.5]) == 4.0, 'Keep support for decimal values.'\nassert total_cost([10, -2, 3]) == 11, 'Add the provided values rather than a fixed list.'"}]
+  }
+]

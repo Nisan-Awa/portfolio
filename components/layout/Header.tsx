@@ -10,6 +10,7 @@ const navItems = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#client-work" },
+  { name: "Learn Python", href: "/learn/python" },
   { name: "Experience", href: "#experience" },
   { name: "Achievements", href: "#achievements" },
   { name: "Skills", href: "#skills" },
@@ -46,7 +47,9 @@ const serverTheme = (): Theme => "dark";
 const getScrolled = () => window.scrollY > 20;
 const serverScrolled = () => false;
 
-export function Header() {
+export function Header({ compact = false }: { compact?: boolean }) {
+  const items = compact ? [{ name: "Portfolio", href: "/#home" }, { name: "Learning guide", href: "#learning-guide" }] : navItems;
+  const linkHref = (href: string) => href.startsWith("#") ? (compact ? "/learn/python" : "/") + href : href;
   const isScrolled = useSyncExternalStore(subscribeScroll, getScrolled, serverScrolled);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const theme = useSyncExternalStore(subscribeTheme, getTheme, serverTheme);
@@ -55,11 +58,11 @@ export function Header() {
 
   useEffect(() => { document.documentElement.classList.toggle("dark", theme === "dark"); }, [theme]);
   useEffect(() => {
-    const media = window.matchMedia("(min-width: 1024px)");
+    const media = window.matchMedia(compact ? "(min-width: 768px)" : "(min-width: 1280px)");
     const closeOnDesktop = () => { if (media.matches) setIsMobileMenuOpen(false); };
     media.addEventListener("change", closeOnDesktop);
     return () => media.removeEventListener("change", closeOnDesktop);
-  }, []);
+  }, [compact]);
   useEffect(() => {
     if (!isMobileMenuOpen) return;
     const trigger = triggerRef.current;
@@ -87,6 +90,7 @@ export function Header() {
   }
   function navigate(event: React.MouseEvent<HTMLAnchorElement>, hash: string) {
     setIsMobileMenuOpen(false);
+    if (!hash.startsWith("#") || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     const section = document.querySelector(hash);
     if (section) {
       event.preventDefault();
@@ -99,16 +103,16 @@ export function Header() {
     <motion.header initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: .55 }} className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
       <div className={cn("pointer-events-auto flex items-center justify-between gap-4 px-5 py-3 rounded-full border border-border w-full max-w-6xl transition-colors", isScrolled ? "bg-card/90 backdrop-blur-xl shadow-lg" : "bg-card/70 backdrop-blur-md")}>
         <Link href="/#home" onClick={event => navigate(event, "#home")} aria-label="Nisan Awa, home" className="flex items-center gap-2 group"><span className="w-9 h-9 rounded-full bg-foreground text-background grid place-items-center font-black text-sm">NA</span><span className="text-sm font-bold tracking-widest uppercase">Nisan</span></Link>
-        <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">{navItems.map(item => <Link key={item.name} href={"/" + item.href} onClick={event => navigate(event, item.href)} className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-secondary rounded-full transition-colors">{item.name}</Link>)}</nav>
+        <nav aria-label="Main navigation" className={cn("hidden items-center gap-1", compact ? "md:flex" : "xl:flex")}>{items.map(item => <Link key={item.name} href={linkHref(item.href)} onClick={event => navigate(event, item.href)} className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-secondary rounded-full transition-colors">{item.name}</Link>)}</nav>
         <div className="flex items-center gap-2">
           <button onClick={toggleTheme} aria-label="Toggle light and dark theme" className="text-foreground w-11 h-11 grid place-items-center hover:bg-secondary rounded-full border border-border">{theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}</button>
-          <button ref={triggerRef} aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"} aria-expanded={isMobileMenuOpen} aria-controls="mobile-navigation" className="lg:hidden w-11 h-11 grid place-items-center text-foreground hover:bg-secondary rounded-full" onClick={() => setIsMobileMenuOpen(open => !open)}>{isMobileMenuOpen ? <X /> : <Menu />}</button>
+          <button ref={triggerRef} aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"} aria-expanded={isMobileMenuOpen} aria-controls="mobile-navigation" className={cn("w-11 h-11 grid place-items-center text-foreground hover:bg-secondary rounded-full", compact ? "md:hidden" : "xl:hidden")} onClick={() => setIsMobileMenuOpen(open => !open)}>{isMobileMenuOpen ? <X /> : <Menu />}</button>
         </div>
       </div>
     </motion.header>
-    <AnimatePresence>{isMobileMenuOpen && <motion.div ref={menuRef} role="dialog" aria-modal="true" aria-label="Site navigation" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-3 z-[60] bg-card/95 backdrop-blur-2xl rounded-3xl border border-border lg:hidden flex flex-col items-center justify-center overflow-y-auto p-6">
+    <AnimatePresence>{isMobileMenuOpen && <motion.div ref={menuRef} role="dialog" aria-modal="true" aria-label="Site navigation" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={cn("fixed inset-3 z-[60] bg-card/95 backdrop-blur-2xl rounded-3xl border border-border flex flex-col items-center justify-start overflow-y-auto p-6", compact ? "md:hidden" : "xl:hidden")}>
       <button onClick={() => setIsMobileMenuOpen(false)} aria-label="Close navigation" className="absolute top-5 right-5 w-11 h-11 grid place-items-center text-muted-foreground hover:text-primary"><X size={28} /></button>
-      <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col items-center gap-5 py-14">{navItems.map(item => <Link key={item.name} href={"/" + item.href} onClick={event => navigate(event, item.href)} className="text-2xl sm:text-3xl font-bold text-muted-foreground hover:text-primary">{item.name}</Link>)}</nav>
+      <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col items-center gap-4 py-14 my-auto">{items.map(item => <Link key={item.name} href={linkHref(item.href)} onClick={event => navigate(event, item.href)} className="text-2xl sm:text-3xl font-bold text-muted-foreground hover:text-primary">{item.name}</Link>)}</nav>
     </motion.div>}</AnimatePresence>
   </>;
 }

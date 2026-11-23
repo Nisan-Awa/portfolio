@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 
 const students = [
@@ -14,6 +15,10 @@ export function Mentoring() {
           <p className="eyebrow">Teaching & mentorship</p>
           <h2 className="display-title">Knowledge goes further<br /><span className="text-primary">when it is shared.</span></h2>
           <p className="body-copy max-w-3xl">Over two months, I tutored Henry Ndubisi and Lotanna Obigwe in Python and web development, helping both learners build their own websites. Here are the portfolios they created.</p>
+        </div>
+        <div className="python-lab-invitation">
+          <div><p className="eyebrow">A place to begin · Open to everyone</p><h3>Small steps. Real Python.</h3><p className="body-copy">Learn one idea, try a short challenge, or run a program of your own. Python Lab brings 40 approachable lessons and an open playground to your browser, for curious learners of any age.</p></div>
+          <Link href="/learn/python" className="action-link">Explore Python Lab</Link>
         </div>
         <div className="school-note">
           <BookOpen size={28} className="text-primary shrink-0" aria-hidden="true" />

@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/prepare-python-runner.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/prepare-python-runner.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:python": "python scripts/verify-python-curriculum.py",
+    "test:python:browser": "node scripts/python-lab-browser-qa.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

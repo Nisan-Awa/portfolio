@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Download, Github, Linkedin, Mail, Phone } from "lucide-react";
 
@@ -81,6 +82,7 @@ export function Contact() {
 
         <div className="mt-10 pt-8 border-t border-border text-muted-foreground text-sm flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} Awa Nisan Tojah. All rights reserved.</p>
+          <Link href="/learn/python" className="text-link">Learn Python in your browser</Link>
           <p className="font-mono text-xs tracking-widest uppercase opacity-70">
             Hardware meets software
           </p>

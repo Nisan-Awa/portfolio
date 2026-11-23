@@ -80,6 +80,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.python-lab-invitation { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 2rem; border: 1px solid var(--primary); border-radius: 1.25rem; margin-bottom: 2rem; background: color-mix(in srgb, var(--primary) 5%, var(--card)); }
+.python-lab-invitation > div { max-width: 46rem; }
+.python-lab-invitation h3 { font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 800; letter-spacing: -.035em; margin-bottom: .8rem; line-height: 1.15; }
+.python-lab-invitation .action-link { flex-shrink: 0; white-space: nowrap; }
+@media (max-width: 760px) { .python-lab-invitation { flex-direction: column; align-items: flex-start; padding: 1.25rem; gap: 1.25rem; } }
+
 a, button {
   -webkit-tap-highlight-color: transparent;
 }

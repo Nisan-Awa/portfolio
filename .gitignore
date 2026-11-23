@@ -47,5 +47,6 @@ next-env.d.ts
 .idea/
 # Temporary verification work
 .deployment-check/
+.python-lab-qa/
 client/
 server/
